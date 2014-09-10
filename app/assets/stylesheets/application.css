@@ -11,7 +11,7 @@
  * file per style scope.
  */
 @import "custom/reset";
-@import bootstrap;
+@import "bootstrap";
 /* Blanket Styles */
 @import "custom/variables";
 @import "custom/custom";
