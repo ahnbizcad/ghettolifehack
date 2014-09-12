@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  root 'hacks#index'
 
+  resources :hacks
   resources :users
 
   devise_for :users, :skip => [:sessions, :registration]
-  devise_for :user, :path => '', :path_names => { :sign_in => "login", 
+  devise_for :user,  :path => '', :path_names => { :sign_in => "login", 
                                                   :sign_out => "logout", 
                                                   :sign_up => "register", 
                                                   :account_update => "account-settings" }

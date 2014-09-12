@@ -94,8 +94,7 @@ SimpleForm.setup do |config|
   # How the label text should be generated altogether with the required text.
   # config.label_text = lambda { |label, required| "#{required} #{label}" }
 
-  # You can define the class to use on all labels. Default is nil.
-  config.label_class = 'control-label'
+
 
   # You can define the class to use on all forms. Default is simple_form.
   # config.form_class = :simple_form
@@ -145,6 +144,20 @@ SimpleForm.setup do |config|
 
 #
 
+  # You can define the class to use on all labels. Default is nil.
+  config.label_class = 'control-label' # Doesn't affect anything.
+
   # Default class for inputs
-  config.input_class = 'form-control'
+  config.input_class = 'form-control' # Chosen for bootstrap
+  
+  # Attempted solution https://github.com/plataformatec/simple_form/wiki/Custom-Wrappers
+  #config.wrappers :inline_checkbox, :tag => 'div', :class => 'control-group', :error_class => 'error' do |b|
+  #  b.use :html5
+  #  b.wrapper :tag => 'div', :class => 'controls' do |ba|
+  #    ba.use :label_input, :wrap_with => { :class => 'checkbox inline' }
+  #    ba.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
+  #    ba.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
+  #  end
+  #end
+
 end

@@ -1,0 +1,8 @@
+= simple_form_for(@hack) do |f|
+  = f.error_notification
+
+  .form-group
+    = f.input :body, label: "Your ghetto life hack"
+
+  .form-actions
+    = f.button :submit

@@ -5,8 +5,24 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-    meta name="viewport" content="initial-scale=1.0" 
-  body
-    p.notice= notice
-    p.alert= alert
-    = yield
+    meta name="viewport" content="initial-scale=1.0"
+
+  body    
+    == render 'layouts/header'
+    == render 'layouts/navbar'
+
+    main
+      .container-fluid
+        - if notice
+          p.notice= notice
+        - if alert
+          .alert.alert-dismissable[ role="alert" data-dismiss="alert" ]
+            p.alert= alert
+        = yield
+
+    == render 'layouts/sidebar'
+    == render 'layouts/footer'
+
+    - if Rails.env.development? || current_user.admin?
+      = params.inspect
+      = debug(params)

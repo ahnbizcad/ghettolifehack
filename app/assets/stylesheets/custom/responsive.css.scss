@@ -1,0 +1,50 @@
+/**************************
+RESPONSIVE CUTOFF WIDTHS
+**************************/
+
+/*----------------------------------------
+ONLY xs devices (phones, 1px to 767px) (doesn't cascade)
+----------------------------------------*/
+/*@media only screen and (max-width: $screen-xs-max) { 
+  
+}*/
+
+
+/*--------------------------------------------------------------------------------*/
+
+
+/*----------------------------------------
+xs is default. Smaller sizes cascade to larger sizes. Flow structure.
+----------------------------------------*/
+body {
+  padding-top: $body-padding-xs;
+}
+
+
+/*----------------------------------------
+sm devices (tablets, 748px and up)
+----------------------------------------*/
+@media only screen and (min-width: $screen-sm){ 
+  body {
+    padding-top: $body-padding-sm;
+  }
+
+
+}
+
+
+/*----------------------------------------
+md devices (desktops, 992px and up)
+----------------------------------------*/
+@media only screen and (min-width: $screen-md){
+  
+}
+
+/*----------------------------------------
+lg devices (large desktops, 1200px and up)
+----------------------------------------*/
+@media only screen and (min-width: $screen-lg){ 
+
+
+}
+
