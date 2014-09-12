@@ -4,7 +4,7 @@ h2 Sign in
     = f.input :email, required: false, autofocus: true
     = f.input :password, required: false
 
-    /= f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
     / https://github.com/rafaelfranca/simple_form-bootstrap/pull/28#issuecomment-28197768
 
     /.checkbox

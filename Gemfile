@@ -30,7 +30,7 @@ gem 'figaro', '~> 0.7.0'
 
 gem 'devise'
 
-gem 'simple_form', '3.1.0.rc1'
+gem 'simple_form', '~> 3.1.0.rc1'
 
 #gem 'filepicker-rails'
 #gem 'carrierwave-rails'
