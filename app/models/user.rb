@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   validates :username,
             presence: true,
-            :uniqueness => { case_sensitive: false }
+            :uniqueness => { case_sensitive: false },
+            length: { in: 4..20 }
 
 end

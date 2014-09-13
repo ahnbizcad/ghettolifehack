@@ -8,10 +8,11 @@
     / Implementation?
     =link_to "Highest Voted", remote: true  
 
+    div
+      = link_to 'New Hack', new_hack_path
 
     ul#hacks
       = render partial: "hacks/hack", collection: @hacks, as: :hack
         
     br
 
-    = link_to 'New Hack', new_hack_path

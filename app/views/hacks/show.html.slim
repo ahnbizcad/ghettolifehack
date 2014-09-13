@@ -7,9 +7,10 @@ li.hack
   = link_to "Favorite"
   /= link_to @hack.comments.count
 
-  - if user_signed_in? && (current_user.id == @hack.user.id || current_user.admin?)
-    = link_to 'Edit', edit_hack_path(@hack)
-    = link_to 'Destroy', hack_path(@hack), data: {:confirm => 'Are you sure?'}, :method => :delete
+  - if user_signed_in? 
+    - if (current_user.id == @hack.user.id || current_user.admin?)
+      = link_to 'Edit', edit_hack_path(@hack)
+      = link_to 'Destroy', hack_path(@hack), data: {:confirm => 'Are you sure?'}, :method => :delete
 
 = render partial: "comments/form", locals: { new_comment: @new_comment, hack: @hack } if user_signed_in?
 = render partial: "comments/comment", collection: @comments, as: :comment

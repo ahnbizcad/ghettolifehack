@@ -11,14 +11,17 @@
   = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close'
 
   h5
-    = comment.user.username
-    /= votes scope
-    small= comment.updated_at
+    .comment-body
+      p= comment.body
+
+    | by 
+    span.username = link_to comment.user.username, comment.user
+    |  
+    small= comment.updated_at.to_date
 
   .comment-main
     /= render partial: 'concerns/vote_comment', locals: { comment: :comment }
 
-    .comment-body
-      p= comment.body
+    
 
     /= link_to "Reply", AJAX stuff

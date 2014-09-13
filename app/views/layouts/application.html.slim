@@ -23,6 +23,6 @@ html
     == render 'layouts/sidebar'
     == render 'layouts/footer'
 
-    - if Rails.env.development? || current_user.admin?
+    - if Rails.env.development?
       = params.inspect
       = debug(params)
