@@ -10,14 +10,8 @@
 
 
     ul#hacks
-      - @hacks.each do |hack|
-        li.hack
-          = hack.body
-          = hack.user.username
-          - if user_signed_in? && current_user.admin? 
-            = link_to 'Edit', edit_hack_path(hack)
-            = link_to 'Destroy', hack, data: {:confirm => 'Are you sure?'}, :method => :delete
-
+      = render partial: "hacks/hack", collection: @hacks, as: :hack
+        
     br
 
     = link_to 'New Hack', new_hack_path

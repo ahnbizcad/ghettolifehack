@@ -32,11 +32,15 @@ gem 'devise'
 
 gem 'simple_form', '~> 3.1.0.rc1'
 
+gem 'acts_as_commentable_with_threading'
+gem 'awesome_nested_set', '>= 3.0.0.rc.5'
+
+gem 'acts_as_votable'
+
+gem 'acts-as-taggable-on'
 #gem 'filepicker-rails'
 #gem 'carrierwave-rails'
 #gem 'mini_magick'
-
-#gem 'ckeditor'
 
 gem 'kaminari'
 #gem 'compass'

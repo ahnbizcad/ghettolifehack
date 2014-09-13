@@ -1,0 +1,24 @@
+/ show.html.slim - hacks
+/ = render partial: "comments/comment", collection: @comments, as: :comment
+
+/ show.html.slim - users
+/ = render partial: 'comment', :locals => { comment: comment }
+
+.comment[ id="comment-#{comment.id}" ]
+  hr
+
+  /- if this comment belongs to the current_user, show destroy link
+  = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close'
+
+  h5
+    = comment.user.username
+    /= votes scope
+    small= comment.updated_at
+
+  .comment-main
+    /= render partial: 'concerns/vote_comment', locals: { comment: :comment }
+
+    .comment-body
+      p= comment.body
+
+    /= link_to "Reply", AJAX stuff

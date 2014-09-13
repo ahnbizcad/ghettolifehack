@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'hacks#index'
+  
+  resources :comments, only: [:create, :destroy]
 
   resources :hacks
   resources :users

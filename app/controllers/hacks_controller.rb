@@ -12,6 +12,9 @@ class HacksController < ApplicationController
   # GET /hacks/1
   # GET /hacks/1.json
   def show
+    @comments = @hack.comment_threads.order('created_at DESC')
+    @new_comment = Comment.build_from(@hack, current_user.id, "") if user_signed_in?
+
   end
 
   # GET /hacks/new
