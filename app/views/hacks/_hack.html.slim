@@ -3,12 +3,15 @@
 
 #hack
 li.hack
+  .header
   = hack.body
   = link_to hack.user.username, hack.user
   = link_to hack.id, hack
+
   = link_to "Favorite"
   = link_to "Comments", hack
   /= link_to hack.comments.count
+  = link_to "Reply"
 
   - if user_signed_in? && (current_user.id == hack.user.id || current_user.admin?)
     = link_to 'Edit', edit_hack_path(hack)

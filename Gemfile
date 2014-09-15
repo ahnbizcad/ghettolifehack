@@ -9,17 +9,22 @@ gem 'pg', '0.17.1'
 gem 'slim-rails'
 
 gem 'sass-rails', '~> 4.0.3'
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.2.0'  
 
 gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0'
-gem 'turbolinks'
-gem 'jquery-turbolinks', '~>2.0.2'
+gem 'jquery-rails'  
+
+#gem 'bower-rails', "~> 0.8.3"
+gem 'angularjs-rails'          
+gem 'angular-rails-templates'
+
+#gem 'turbolinks'                     
+#gem 'jquery-turbolinks', '~>2.0.2'  # Handled by bower
 
 gem 'autoprefixer-rails'
 gem 'uglifier', '>= 1.3.0'
 
+gem 'jbuilder', '~> 2.0'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 group :doc do

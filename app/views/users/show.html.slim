@@ -1,6 +1,19 @@
-p#notice = notice
+-if matches_current_user(@user)
+  =link_to "Account Settings", edit_user_registration_path
+  =link_to 'Edit Profile', edit_user_path(@user)
+
+/= user.image
+/= user.username
+
+/= user.hacks_count
+/= user.comments_count
+
+.row
+  .col-xs-12.col-sm-6
+    = render partial: 'hacks/hack', collection: @hacks, as: :hack
+  .col-xs-12.col-sm-6
+    /= user.comments
+
+/= user.hacks.favorites
 
 
-= link_to 'Edit', edit_user_path(@user)
-'|
-= link_to 'Back', users_path

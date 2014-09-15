@@ -1,14 +1,14 @@
 doctype html
-html
+html[ ng-app="GhettoLifeHack" ]
   head
-    title Ghetto Life Hack
+    title "Ghetto Life Hack"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     meta name="viewport" content="initial-scale=1.0"
 
-  body    
-    == render 'layouts/header'
+  body
+    == render 'layouts/header'  
     == render 'layouts/navbar'
 
     main
@@ -26,3 +26,10 @@ html
     - if Rails.env.development?
       = params.inspect
       = debug(params)
+
+/FEATURES
+      / login via twitter, fb
+      /tweet with @ghettolifehack, truncate, link
+      /fb share
+      /moderator points
+      /badges - hard at work
