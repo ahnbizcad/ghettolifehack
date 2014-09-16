@@ -4,15 +4,14 @@
 
     | Sort by:
     / Implementation?
-    =link_to "Newest", remote: true         
+    =link_to "Newest", remote: true
     / Implementation?
-    =link_to "Highest Voted", remote: true  
+    =link_to "Highest Voted", remote: true
 
     div
       = link_to 'New Hack', new_hack_path
 
-    ul#hacks
+    ul.hacks
       = render partial: "hacks/hack", collection: @hacks, as: :hack
-        
-    br
+
 

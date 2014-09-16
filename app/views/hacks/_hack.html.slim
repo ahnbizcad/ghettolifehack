@@ -1,19 +1,42 @@
+/ 'hack' is the local variable
+
 / index.html.slim - hacks
 / = render partial: "hacks/hack", collection: @hacks, as: :hack
 
-#hack
 li.hack
-  .header
-  = hack.body
-  = link_to hack.user.username, hack.user
-  = link_to hack.id, hack
+  .hack-header   
+    = link_to hack do
+      | #
+      = hack.id
+      ' 
 
-  = link_to "Favorite"
-  = link_to "Comments", hack
-  /= link_to hack.comments.count
-  = link_to "Reply"
+    ' by
 
-  - if user_signed_in? 
-    - if matches_current_user?(hack.user) || current_user.admin?
-      = link_to 'Edit', edit_hack_path(hack)
-      = link_to 'Destroy', hack_path(hack), data: {:confirm => 'Are you sure?'}, :method => :delete
+    = link_to hack.user.username, hack.user
+    '
+
+    = hack.created_at.to_datetime
+    '
+
+    - if user_signed_in? 
+      - if matches_current_user?(hack.user) || current_user.admin?
+        /- if not timed out
+        .close
+          = link_to 'Edit', edit_hack_path(hack)
+          '
+          = link_to 'Delete', hack_path(hack), data: {:confirm => 'Are you sure?'}, :method => :delete
+
+  .hack-body
+    = hack.body
+    
+  .hack-footer
+    = link_to "Tweet"
+    '
+    = link_to "FBshare"
+    '
+    = link_to hack do
+      | Comments(
+      = hack.comment_threads_count
+      ' )
+  
+    = link_to "Favorite"

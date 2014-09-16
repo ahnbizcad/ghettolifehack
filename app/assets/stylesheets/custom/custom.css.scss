@@ -6,14 +6,26 @@ body {
   background-color: #254673;
 }
 
-#hacks {
-  .hack {
-    .heading {
-      background-color: #254673;
-    }
+
+.hack {
+  list-style: none;
+
+  .hack-heading {
+    background-color: #254673;
+  }
+  .hack-body {
+
+  }
+  .hack-footer {
+
   }
 }
 
+
+#comments {
+  
+
+}
 input[type="checkbox"] {
   
 }

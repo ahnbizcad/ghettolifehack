@@ -1,18 +1,33 @@
--if matches_current_user?(@user)
-  =link_to "Account Settings", edit_user_registration_path
-  =link_to 'Edit Profile', edit_user_path(@user)
+.close
+  -if matches_current_user?(@user)
+    =link_to "Account Settings", edit_user_registration_path
+.row
+  #profile-large.col-xs-12.col-sm-4
+    .thumbnail
+      = @user.image
+    .caption
+      = @user.username
+    - if matches_current_user?(@user)
+      .caption
+        =link_to 'Edit Profile', edit_user_path(@user)
 
-/= user.image
-/= user.username
-
-/= user.hacks_count
-/= user.comments_count
+  .user-stats.col-xs-12.col-sm-9
+    ' GLH submitted:
+    = @user.hacks_count
+    <br>
+    ' Comments posted:
+    = @user.comment_threads_count
 
 .row
-  .col-xs-12.col-sm-6
+  ul#user-items-bar.nav.nav-tabs
+    li= link_to "GLHs"
+    li= link_to "Comments"
+    li= link_to "Favorites"
+
+  ul#hacks.col-xs-12.col-sm-6
     = render partial: 'hacks/hack', collection: @hacks, as: :hack
-  .col-xs-12.col-sm-6
-    /= user.comments
+  ul#comments.col-xs-12.col-sm-6
+    = render partial: 'comments/comment', collection: @comments, as: :comment
 
 /= user.hacks.favorites
 

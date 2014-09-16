@@ -6,6 +6,8 @@ class Hack < ActiveRecord::Base
   #scope :by_highest_rating, -> { order("rating DESC") } # with vote table?
   #scope :by_lowest_rating,  -> { order("rating ASC") }  # with vote table?
 
-
+  def image
+    self.user.image
+  end
 
 end
