@@ -11,18 +11,9 @@
       .caption
         =link_to 'Edit Profile', edit_user_path(@user)
 
-  .user-stats.col-xs-12.col-sm-9
-    ' GLH submitted:
-    = @user.hacks_count
-    <br>
-    ' Comments posted:
-    = @user.comment_threads_count
 
 .row
-  ul#user-items-bar.nav.nav-tabs
-    li= link_to "GLHs"
-    li= link_to "Comments"
-    li= link_to "Favorites"
+  = render partial: 'layouts/profile_bar', locals: { user: @user }
 
   ul#hacks.col-xs-12.col-sm-6
     = render partial: 'hacks/hack', collection: @hacks, as: :hack

@@ -4,8 +4,29 @@ body {
 
 #navbar {
   background-color: #254673;
+  
+  >ul { 
+    white-space: nowrap;
+
+    >li {
+      float: none;
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+
+        >ul {
+          >li {
+            display: block;
+          }
+        }
+
+    }
+  }
 }
 
+.hacks {
+
+}
 
 .hack {
   list-style: none;
@@ -22,10 +43,15 @@ body {
 }
 
 
-#comments {
+.comments {
   
 
 }
-input[type="checkbox"] {
-  
+
+.comment {
+
+}
+
+#profile-bar {
+  background-color: #5599CC;
 }

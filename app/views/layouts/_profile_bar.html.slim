@@ -1,0 +1,12 @@
+ul#profile-bar.nav.nav-tabs
+  li= link_to "#" do
+    | Favorites
+    /= user.favorites_count
+  li= link_to "#" do
+    | GLHs(
+    = user.hacks_count
+    | )
+  li= link_to "#" do
+    | Comments(
+    = user.comment_threads_count
+    | )
