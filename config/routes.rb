@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'application#index'
+  root 'hacks#index'
   #get '*path' => 'application#index'
   
   resources :comments, only: [:create, :destroy]

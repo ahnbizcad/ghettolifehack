@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913065537) do
+ActiveRecord::Schema.define(version: 20140916005023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140913065537) do
     t.datetime "updated_at"
     t.text     "body"
     t.integer  "user_id"
+    t.integer  "comment_threads_count", default: 0, null: false
   end
 
   add_index "hacks", ["user_id"], name: "index_hacks_on_user_id", using: :btree
@@ -57,6 +58,10 @@ ActiveRecord::Schema.define(version: 20140913065537) do
     t.inet     "last_sign_in_ip"
     t.string   "username"
     t.boolean  "admin",                  default: false
+    t.string   "image"
+    t.integer  "points",                 default: 0,     null: false
+    t.integer  "hacks_count",            default: 0,     null: false
+    t.integer  "comment_threads_count",  default: 0,     null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
