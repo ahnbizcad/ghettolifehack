@@ -9,6 +9,7 @@ class Comment < ActiveRecord::Base
   #acts_as_votable
 
   belongs_to :commentable, :polymorphic => true, counter_cache: :comment_threads_count
+  belongs_to :user
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text

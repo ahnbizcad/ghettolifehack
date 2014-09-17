@@ -2,11 +2,11 @@ class CommentsController < ApplicationController
 
   def create
     @comment_hash = params[:comment]
-    #@comment = comment.new(comment_params)
     @obj = @comment_hash[:commentable_type].constantize.find(@comment_hash[:commentable_id])
+    @user_id = current_user.id
     # Not implemented: check to see whether the user has permission to create a comment on this object
-    
-    @comment = Comment.build_from(@obj, current_user.id, @comment_hash[:body])
+    @comment = Comment.build_from(@obj, @user_id, @comment_hash[:body])
+
     if @comment.save
       # layout: false removes header and footer.
       # status: created returns HTTP status code 201 when appropriate.

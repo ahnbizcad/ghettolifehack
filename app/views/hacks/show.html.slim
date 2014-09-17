@@ -3,7 +3,7 @@ p#notice = notice
 = render partial: "hacks/hack", :locals => { hack: @hack }
 
 - if user_signed_in?
-  = render partial: "comments/form", locals: { new_comment: @new_comment, hack: @hack } if user_signed_in?
+  = render partial: "comments/form", locals: { comment: @comment, hack: @hack } if user_signed_in?
 = render partial: "comments/comment", collection: @comments, as: :comment
 
 = link_to 'Edit', edit_hack_path(@hack)

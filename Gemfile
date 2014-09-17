@@ -15,11 +15,11 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'  
 
 #gem 'bower-rails', "~> 0.8.3"
-gem 'angularjs-rails'          
-gem 'angular-rails-templates'
+#gem 'angularjs-rails'          
+#gem 'angular-rails-templates'
 
-#gem 'turbolinks'                     
-#gem 'jquery-turbolinks', '~>2.0.2'  # Handled by bower
+gem 'turbolinks'                     
+gem 'jquery-turbolinks', '~>2.0.2'  # Handled by bower
 
 gem 'autoprefixer-rails'
 gem 'uglifier', '>= 1.3.0'

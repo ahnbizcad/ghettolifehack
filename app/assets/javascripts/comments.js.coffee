@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  # Crete a comment.
+  # Create a comment.
   $(".comment-form")
     .on "ajax:beforeSend", (evt, xhr, settings) ->
       $(this).find("textarea")

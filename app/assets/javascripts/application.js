@@ -11,14 +11,14 @@
 // about supported directives.
 //
 //= require jquery
-//## require jquery.turbolinks
+//= require jquery.turbolinks
 //= require jquery_ujs
 //
 //= require bootstrap
-//= require angular
+// require angular
 // require angular-route
 // require angular-rails-templates
 //
 //= require_tree .
 //
-//## require turbolinks
+//= require turbolinks

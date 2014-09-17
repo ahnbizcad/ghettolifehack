@@ -1,14 +1,14 @@
 / show.html.slim - hacks
-/= render partial: "comments/form", locals: { new_comment: @new_comment } if user_signed_in?
+/= render partial: "comments/form", locals: { comment: @comment } if user_signed_in?
 
 .comment-form
-  = simple_form_for new_comment, :remote => true do |f|
+  = simple_form_for comment, :remote => true do |f|
     = f.error_notification
     h4 = current_user.username
     = f.input :body, :label => false
     
-    = f.input :commentable_type, :as => :hidden, :value => new_comment.commentable_type
-    = f.input :commentable_id, :as => :hidden, :value => new_comment.commentable_id
+    = f.input :commentable_type, :as => :hidden, :value => comment.commentable_type
+    = f.input :commentable_id, :as => :hidden, :value => comment.commentable_id
 
     / hitting reply button of a comment creates a hidden "parent_id" field here via AJAX. ?
     
