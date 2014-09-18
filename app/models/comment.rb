@@ -1,15 +1,15 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
-  validates :body, :presence => true
-  validates :user, :presence => true
+  validates :body, :presence => true #{ message: "Please type a comment." }
+  validates :user, :presence => true 
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
   #acts_as_votable
 
   belongs_to :commentable, :polymorphic => true, counter_cache: :comment_threads_count
-  belongs_to :user
+  belongs_to :user 
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text

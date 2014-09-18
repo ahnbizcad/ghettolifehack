@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :title
 
   def timed_out?(object, time=5*60*1000)
     (Time.now - object.created_at > time) ? true : false
@@ -17,6 +18,10 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up)        { |u| u.permit(:email, :password, :password_confirmation, :username ) }
       devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :username, :current_password) }
     end
-    
+
+    private
+      def title
+        @title = "Ghetto Lifehack"
+      end
 
 end

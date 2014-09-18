@@ -19,7 +19,8 @@
     = render partial: 'hacks/hack', collection: @hacks, as: :hack
   ul#comments.col-xs-12.col-sm-6
     = render partial: 'comments/comment', collection: @comments, as: :comment
-
+| testing comment
+= @user.comments.count
 /= user.hacks.favorites
 
 

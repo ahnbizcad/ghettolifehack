@@ -3,7 +3,7 @@
 / index.html.slim - hacks
 / = render partial: "hacks/hack", collection: @hacks, as: :hack
 
-li.hack
+li.hack.media
   .hack-header   
     = link_to hack do
       | #
@@ -13,9 +13,6 @@ li.hack
     ' by
 
     = link_to hack.user.username, hack.user
-    '
-
-    = hack.created_at.to_datetime
     '
 
     - if user_signed_in? 
@@ -40,3 +37,7 @@ li.hack
       ' )
   
     = link_to "Favorite"
+    '
+
+    = hack.created_at.to_datetime
+    '

@@ -11,7 +11,7 @@
     div
       = link_to 'New Hack', new_hack_path
 
-    ul.hacks
+    ul.hacks.media-list
       = render partial: "hacks/hack", collection: @hacks, as: :hack
 
 

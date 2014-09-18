@@ -2,12 +2,12 @@ nav#navbar.navbar.navbar-default[ role="navigation" ]
   .container-fluid
     .navbar-header
       = link_to root_path, class: "navbar-brand" do
-        = image_tag "Ghetto Life Hack"
+        = image_tag "Ghetto Lifehack"
 
     ul#navbar-main.nav.navbar-nav
       li= link_to "Hacks", hacks_path
       li= link_to "Submit hack", new_hack_path
-      
+
     ul#login.nav.navbar-nav.navbar-right
       -if user_signed_in?
         li= link_to current_user.username, current_user
