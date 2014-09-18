@@ -40,9 +40,10 @@ gem 'simple_form', '~> 3.1.0.rc1'
 gem 'acts_as_commentable_with_threading'
 gem 'awesome_nested_set', '>= 3.0.0.rc.5'
 
-gem 'acts_as_votable'
+gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'acts-as-taggable-on'
+
 #gem 'filepicker-rails'
 #gem 'carrierwave-rails'
 #gem 'mini_magick'

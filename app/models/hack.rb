@@ -1,6 +1,7 @@
 class Hack < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   acts_as_commentable
+  acts_as_votable
 
   scope :by_newest,         -> { order("created_at DESC") }
   #scope :by_highest_rating, -> { order("rating DESC") } # with vote table?

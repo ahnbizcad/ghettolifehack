@@ -200,7 +200,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   acts_as_commentable_with_threading
-  acts_as_votable
+  acts_as_votable (~> 0.10.0)
   annotate
   autoprefixer-rails
   awesome_nested_set (>= 3.0.0.rc.5)
