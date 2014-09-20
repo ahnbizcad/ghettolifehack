@@ -31,18 +31,21 @@ group :doc do
   gem 'sdoc', '~> 0.4.0'
 end
 
-gem 'figaro', '~> 0.7.0'
+gem 'figaro', '~> 1.0.0'
 
-gem 'devise'
+gem 'devise', '~> 3.3.0'
+
+gem 'twitter', '~> 5.11.0'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 gem 'simple_form', '~> 3.1.0.rc1'
 
 gem 'acts_as_commentable_with_threading'
 gem 'awesome_nested_set', '>= 3.0.0.rc.5'
-
 gem 'acts_as_votable', '~> 0.10.0'
-
 gem 'acts-as-taggable-on'
+
 
 #gem 'filepicker-rails'
 #gem 'carrierwave-rails'

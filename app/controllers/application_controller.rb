@@ -17,11 +17,13 @@ class ApplicationController < ActionController::Base
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up)        { |u| u.permit(:email, :password, :password_confirmation, :username ) }
       devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :username, :current_password) }
+
     end
 
-    private
-      def title
-        @title = "Ghetto Lifehack"
-      end
+  private
+  
+    def title
+      @title = "Ghetto Lifehack"
+    end
 
 end

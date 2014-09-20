@@ -9,8 +9,8 @@
 .comment[ id="comment-#{comment.id}" ]
   hr
 
-  /- if this comment belongs to the current_user, show destroy link
-  = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close'
+  - if matches_current_user?(comment.user)
+    = link_to "×", comment_path(comment), :method => :delete, :remote => true, :data => { :confirm => "Delete this comment?" }, :disable_with => "Deleting...", :class => 'close'
 
   h5
     .comment-body
