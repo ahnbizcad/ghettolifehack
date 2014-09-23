@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   has_many :comments
   acts_as_voter
 
-  has_many :authorizations
+  has_many :authentications
 
   validates :username,
             presence: true,
@@ -54,12 +54,12 @@ class User < ActiveRecord::Base
   }
 
   def self.from_omniauth(auth, the_current_user)
-    authorization = Authorization.where(:provider => auth.provider, 
+    authentication = Authentication.where(:provider => auth.provider, 
                                         :uid => auth.uid.to_s, 
                                         :token => auth.credentials.token, 
                                         :secret => auth.credentials.secret).first_or_initialize
-    authorization.profile_page = auth.info.urls.first.last unless authorization.persisted?
-    if authorization.user.blank?
+    authentication.profile_page = auth.info.urls.first.last unless authentication.persisted?
+    if authentication.user.blank?
       user = the_current_user.nil? ? User.where('email = ?', auth['info']['email']).first : the_current_user
       if user.blank?
         user = User.new
@@ -68,10 +68,10 @@ class User < ActiveRecord::Base
         user.fetch_details(auth)
         user.save
       end
-      authorization.user = user
-      authorization.save
+      authentication.user = user
+      authentication.save
     end
-    authorization.user
+    authentication.user
   end
 
   def self.new_with_session(params, session)

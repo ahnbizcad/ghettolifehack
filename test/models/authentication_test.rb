@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: authorizations
+# Table name: authentications
 #
 #  id           :integer          not null, primary key
 #  user_id      :integer
@@ -13,6 +13,10 @@
 #  updated_at   :datetime
 #
 
-class Authorization < ActiveRecord::Base
-  belongs_to :user
+require 'test_helper'
+
+class AuthenticationTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
