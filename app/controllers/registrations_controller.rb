@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+#Override some Devise methods
 
   def build_resource(*args)
     super

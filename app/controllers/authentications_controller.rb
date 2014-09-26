@@ -34,11 +34,6 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
 
   end
 
-  # Overrides
-  def create
-    super
-    session[:omniauth] = nil unless @user.new_record?
-  end
 
   #################################
   #def twitter

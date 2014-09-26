@@ -7,11 +7,11 @@ class TweetsController < ApplicationController
       config.access_token        = "YOUR_ACCESS_TOKEN"
       config.access_token_secret = "YOUR_ACCESS_SECRET"
     end
-    twitter_client.update(content)
+    
   end
 
   def create
-
+    twitter_client.update("content")
   end
 
 end

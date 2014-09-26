@@ -55,7 +55,6 @@ class User < ActiveRecord::Base
 
 #
 
-
   def apply_omniauth(omni)
     authentications.build(:provider => omni['provider'],
                           :uid => omni['uid'],
@@ -63,7 +62,12 @@ class User < ActiveRecord::Base
                           :token_secret => omni['credentials']['secret'])
   end
 
-  # Overrides
+  def password_required?
+    super && (authentications.empty? || !password.blank?)
+  end
+
+  # Overrides Devise method.
+  # To update password if user only authenticated through Twitter, and user was created with blank pw.
   def update_with_password(params, *options)
     if encrypted_password.blank?
       update_attributes(params, *options)
@@ -71,11 +75,6 @@ class User < ActiveRecord::Base
       super
     end
   end
-
-  def password_required?
-    super && (authentications.empty? || !password.blank?)
-  end
-
 
 ########################
 # railscast #235 way
