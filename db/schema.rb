@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140923195223) do
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
-    t.string   "secret"
+    t.string   "token_secret"
     t.string   "profile_page"
     t.datetime "created_at"
     t.datetime "updated_at"

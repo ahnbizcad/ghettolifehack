@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   devise_for :users, :path => '', 
                      :path_names => { :sign_in => "login", 
                                       :sign_out => "logout", 
-                                      :sign_up => "join", 
+                                      :sign_up => "sign-up", 
                                       :account_update => "account-settings" },
-                     :controllers => { omniauth_callbacks: "users/omniauth_callbacks" }
+                     :controllers => { omniauth_callbacks: "authentications", registrations: "registrations" }
                       
-  get "/auth/:provider/callback", to: "omniauth_callbacks#create"
+  get "/auth/:provider/callback", to: "authentications#:provider"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -53,46 +53,84 @@ class User < ActiveRecord::Base
     facebook: 'Facebook'
   }
 
-  def self.from_omniauth(auth, the_current_user)
-    authentication = Authentication.where(:provider => auth.provider, 
-                                        :uid => auth.uid.to_s, 
-                                        :token => auth.credentials.token, 
-                                        :secret => auth.credentials.secret).first_or_initialize
-    authentication.profile_page = auth.info.urls.first.last unless authentication.persisted?
-    if authentication.user.blank?
-      user = the_current_user.nil? ? User.where('email = ?', auth['info']['email']).first : the_current_user
-      if user.blank?
-        user = User.new
-        user.skip_confirmation!
-        user.password = Devise.friendly_token[0, 20]
-        user.fetch_details(auth)
-        user.save
-      end
-      authentication.user = user
-      authentication.save
-    end
-    authentication.user
+#
+
+
+  def apply_omniauth(omni)
+    authentications.build(:provider => omni['provider'],
+                          :uid => omni['uid'],
+                          :token => token = omni['credentials']['token'],
+                          :token_secret => omni['credentials']['secret'])
   end
 
-  def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"], without_protection: true) do |user|
-        user.attributes = params
-        user.valid?
-      end
+  # Overrides
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
     else
       super
     end
   end
 
-  def fetch_details(auth)
-    self.name = auth.info.name
-    self.email = auth.info.email
-    self.photo = URI.parse(auth.info.image)
+  def password_required?
+    super && (authentications.empty? || !password.blank?)
   end
 
-  def password_required?
-    super && provider.blank?
-  end
+
+########################
+# railscast #235 way
+
+
+
+
+
+
+#########################
+#
+#  def self.from_omniauth(auth, the_current_user)
+#    authentication = Authentication.where(:provider => auth.provider, 
+#                                          :uid => auth.uid.to_s, 
+#                                          :token => auth.credentials.token, 
+#                                          :secret => auth.credentials.secret).first_or_initialize
+#      authentication.profile_page = auth.info.urls.first.last unless authentication.persisted?
+#    
+#    # Handle twitter not providing email.
+#    if authentication.user.blank?
+#      user = the_current_user.nil? ? User.where('email = ?', auth['info']['email']).first : the_current_user
+#      if user.blank?
+#        user = User.new
+#        #user.skip_confirmation!
+#        user.password = Devise.friendly_token[0, 20]
+#        user.fetch_details(auth)
+#        user.save
+#      end
+#      authentication.user = user
+#      authentication.save
+#    end
+#    authentication.user
+#  end
+#
+#  def self.new_with_session(params, session)
+#    if session["devise.user_attributes"]
+#      new(session["devise.user_attributes"], without_protection: true) do |user|
+#        user.attributes = params
+#        user.valid?
+#      end
+#    else
+#      super # references devise's create new user instance.
+#    end
+#  end
+#
+#  def fetch_details(auth)
+#    self.username = auth.info.name
+#    self.email = auth.info.email
+#    self.image = URI.parse(auth.info.image)
+#  end
+#
+#  def password_required?
+#    super && Authentication.provider.blank? 
+#    # "provider" attribute isn't on user table. how to reference it from authentication model? 
+#    # Is checking pre-existing values required - what if not signed in?
+#  end
 
 end

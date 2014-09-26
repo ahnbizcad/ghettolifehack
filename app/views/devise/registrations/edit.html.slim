@@ -13,6 +13,11 @@ h2
     = f.input :password_confirmation, required: false
   .form-actions
     = f.button :submit, "Update"
+
+- User::SOCIALS.each do |k, soc|
+  = link_to user_omniauth_authorize_path(:twitter) do
+    = "#{k}"
+
 /h3 Cancel my account
 /p
 /  | Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
