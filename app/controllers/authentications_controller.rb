@@ -10,8 +10,7 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
       user = User.find(authentication.user_id)
       sign_in_and_redirect user
     elsif current_user 
-      # If signed in via any other strategy, including devise.
-      
+      # If signed in via any other strategy, including devise.      
       current_user.authentications.create!(:provider => omni['provider'], 
                                            :uid => omni['uid'], 
                                            :token => token = omni['credentials']['token'],
@@ -34,6 +33,47 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
 
   end
 
+    def facebook
+    omni = request.env["omniauth.auth"]
+    authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
+
+    if authentication 
+      # If already registered previously
+      flash[:notice] = "Logged in successfully."      
+      user = User.find(authentication.user_id)
+      sign_in_and_redirect user
+    elsif current_user 
+      # If signed in via any other strategy, including devise.      
+      current_user.authentications.create!(:provider => omni['provider'], 
+                                           :uid => omni['uid'], 
+                                           :token => token = omni['credentials']['token'],
+                                           :token_secret => omni['credentials']['secret'])
+      flash[:notice] = "Authentication successful."
+      binding.pry
+      sign_in_and_redirect current_user
+    else
+      # If brand new to the site.
+      user = User.new
+      # different
+      user.email = omni['extra']['raw_info']['email']
+      user.apply_omniauth(omni)
+      
+      if user.save
+        flash[:notice] = "Login successful."
+        sign_in_and_redirect User.find(user.id)
+      else
+        session[:omniauth] = omni.except('extra')
+        redirect_to new_user_registration_path
+      end
+    end
+
+  end
+
+
+end
+
+
+#Alternative attempted implementations of twitter using dynamic method for all providers
 
   #################################
   #def twitter
@@ -73,6 +113,3 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
 #  def failure
 #
 #  end
-
-
-end

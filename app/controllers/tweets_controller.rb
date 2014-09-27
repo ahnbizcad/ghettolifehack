@@ -1,17 +1,13 @@
 class TweetsController < ApplicationController
-
-  def new(content)
-    client = Twitter::Streaming::Client.new do |config|
-      config.consumer_key        = "YOUR_CONSUMER_KEY"
-      config.consumer_secret     = "YOUR_CONSUMER_SECRET"
-      config.access_token        = "YOUR_ACCESS_TOKEN"
-      config.access_token_secret = "YOUR_ACCESS_SECRET"
-    end
-    
-  end
+  before_action :tweet_params
 
   def create
-    twitter_client.update("content")
+    user_signed_in? ? current_user.send_tweet("stuff") : redirect_to(user_omniauth_authorize_path(:twitter))
   end
+
+  private
+    def tweet_params
+      params.permit(:content)
+    end
 
 end

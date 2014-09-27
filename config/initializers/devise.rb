@@ -261,7 +261,7 @@ Devise.setup do |config|
 
   # Rails.application.config.middleware.use OmniAuth::Builder do
     config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
-    #config.omniauth :facebook, ENV["FACEBOOK_CONSUMER_KEY"], ENV["FACEBOOK_CONSUMER_SECRET"]
+    config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
   #end
 
 #

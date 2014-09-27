@@ -15,7 +15,11 @@ Rails.application.routes.draw do
                      :controllers => { omniauth_callbacks: "authentications", registrations: "registrations" }
                       
   get "/auth/:provider/callback", to: "authentications#:provider"
-  get "auth/failure"
+  #get "auth/failure" Fail for login, or fail for provider login?
+  resources :tweets, only: [:create]
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

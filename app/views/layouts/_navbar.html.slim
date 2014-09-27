@@ -7,6 +7,9 @@ nav#navbar.navbar.navbar-default[ role="navigation" ]
     ul#navbar-main.nav.navbar-nav
       li= link_to "Hacks", hacks_path
       li= link_to "Submit hack", new_hack_path
+      li= link_to "https://twitter.com/GhettoLifeHack_", class: "twitter-follow-button", data: { "show-count" => "false", dnt: "true" } do
+        | Follow @GhettoLifeHack
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
     ul#login.nav.navbar-nav.navbar-right
       -if user_signed_in?
@@ -15,6 +18,5 @@ nav#navbar.navbar.navbar-default[ role="navigation" ]
         li= link_to "Log Out", destroy_user_session_path, method: :delete
       -else
         li= link_to "Sign Up", new_user_registration_path
-        li= link_to "Log In with Twitter", user_omniauth_authorize_path(:twitter)
         li= link_to "Log In", new_user_session_path
         
