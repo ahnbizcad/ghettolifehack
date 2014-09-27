@@ -1,13 +1,13 @@
 .row
-  .col-xs-12
-    h1 Listing hacks
-
+  .col-xs-3.pull-right
     | Sort by:
     / Implementation?
     =link_to "Newest", remote: true
     / Implementation?
     =link_to "Highest Voted", remote: true
 
+.row
+  .col-xs-12
     div
       = link_to 'New Hack', new_hack_path
 
