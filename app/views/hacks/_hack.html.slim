@@ -28,10 +28,10 @@ li.hack.media
           = link_to 'Delete', hack_path(hack), data: {:confirm => 'Are you sure?'}, :method => :delete
 
   .hack-footer
-    = link_to "https://twitter.com/share", class: "twitter-share-button", data: { url: hack_url(hack), text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
+    = link_to "https://twitter.com/share", class: "twitter-share-button", :'data-url' => hack_url(hack), :'data-text' => hack.body, :'data-via' => "GhettoLifeHack_", :'data-hashtags' => "ghettolifehack" do
       = image_tag "Tweet", alt: "Tweet"
       '
-    = link_to "https://twitter.com/share", class: "twitter-share-button", data: { url: "https://google.com", text: "custom-text", via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
+    = link_to "https://twitter.com/share", class: "twitter-share-button", :'data-url' => "httpL//google.com", :'data-text' => "custom text", :'data-via' => "GhettoLifeHack_", :'data-hashtags' => "ghettolifehack" do
       = image_tag "Tweet", alt: "Tweet"
       '
     = link_to "FBshare"
