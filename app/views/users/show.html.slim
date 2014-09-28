@@ -11,16 +11,17 @@
       .caption
         =link_to 'Edit Profile', edit_user_path(@user)
 
-
 .row
-  = render partial: 'layouts/profile_bar', locals: { user: @user }
+  = render partial: 'layouts/profile_bar', locals: { user: @user, hacks: @hacks, comments: @comments }
 
-  ul#hacks.col-xs-12.col-sm-6
-    = render partial: 'hacks/hack', collection: @hacks, as: :hack
-  ul#comments.col-xs-12.col-sm-6
-    = render partial: 'comments/comment', collection: @comments, as: :comment
-| testing comment
-= @user.comments.count
-/= user.hacks.favorites
+/put in bar
+
+/  ul#hacks.col-xs-12.col-sm-6
+/    = render partial: 'hacks/hack', collection: @hacks, as: :hack
+/  ul#comments.col-xs-12.col-sm-6
+/    = render partial: 'comments/comment', collection: @comments, as: :comment
+/| testing comment
+/= @user.comments.count
+//= user.hacks.favorites
 
 

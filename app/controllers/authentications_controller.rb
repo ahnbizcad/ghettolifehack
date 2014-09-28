@@ -49,7 +49,6 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
                                            :token => token = omni['credentials']['token'],
                                            :token_secret => omni['credentials']['secret'])
       flash[:notice] = "Authentication successful."
-      binding.pry
       sign_in_and_redirect current_user
     else
       # If brand new to the site.

@@ -16,6 +16,7 @@
 
 class Hack < ActiveRecord::Base
   belongs_to :user, counter_cache: true
+  has_many :favorites
   acts_as_commentable
   acts_as_votable
 
@@ -23,7 +24,12 @@ class Hack < ActiveRecord::Base
   #scope :by_highest_rating, -> { order("rating DESC") } # with vote table?
   #scope :by_lowest_rating,  -> { order("rating ASC") }  # with vote table?
 
-  def image
+  # Favorite is different model from Hack, inner join? Also, user id
+  #scope :favorites, joins(:favorites) & -> { joins(:favorites) }
+
+
+
+  def user_image
     self.user.image
   end
 

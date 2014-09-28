@@ -35,11 +35,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, 
          :omniauthable, omniauth_providers: [ :twitter ]
 
+  has_many :authentications
+
   has_many :hacks
+  has_many :favorites
   has_many :comments
   acts_as_voter
-
-  has_many :authentications
 
   validates :username,
             presence: true,

@@ -32,22 +32,7 @@ class Comment < ActiveRecord::Base
   #acts_as_votable
 
   belongs_to :commentable, :polymorphic => true, counter_cache: :comment_threads_count
-  belongs_to :user 
-
-  # Helper class method that allows you to build a comment
-  # by passing a commentable object, a user_id, and comment text
-  # example in readme
-  def self.build_from(obj, user_id, comment)
-    new \
-      :commentable => obj,
-      :body        => comment,
-      :user_id     => user_id
-  end
-
-  #helper method to check if a comment has children
-  def has_children?
-    self.children.any?
-  end
+  belongs_to :user
 
   # Helper class method to lookup all comments assigned
   # to all commentable types for a given user.
@@ -61,9 +46,29 @@ class Comment < ActiveRecord::Base
     where(:commentable_type => commentable_str.to_s, :commentable_id => commentable_id).order('created_at DESC')
   }
 
+  # Helper class method that allows you to build a comment
+  # by passing a commentable object, a user_id, and comment text
+  # example in readme
+  def self.build_from(obj, user_id, comment)
+    new \
+      :commentable => obj,
+      :body        => comment,
+      :user_id     => user_id
+  end
+
   # Helper class method to look up a commentable object
   # given the commentable class name and id
   def self.find_commentable(commentable_str, commentable_id)
     commentable_str.constantize.find(commentable_id)
   end
+
+  def find_commentable
+    self.commentable_type.constantize.find(self.commentable_id)
+  end
+
+  #helper method to check if a comment has children
+  def has_children?
+    self.children.any?
+  end
+
 end

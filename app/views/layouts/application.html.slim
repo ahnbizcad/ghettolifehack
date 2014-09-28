@@ -3,11 +3,12 @@ html
   head
     title 
       = @title
+    <!--[if IE]> get a better browser <![endif]-->
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     meta name="viewport" content="initial-scale=1.0"
-
+    
   body
     == render 'layouts/header'  
     == render 'layouts/navbar'

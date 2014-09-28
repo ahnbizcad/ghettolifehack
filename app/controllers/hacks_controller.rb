@@ -3,6 +3,18 @@ class HacksController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
 
+  def favorite
+    @favorite = Favorite.find_or_initialize_by(user_id: current_user.id, hack_id: params[:id])
+    if @favorite.persisted?
+      @favorite.destroy
+      render js: {  }
+    else
+      @favorite.save
+      render js: {  }
+    end
+
+  end
+
   # GET /hacks
   # GET /hacks.json
   def index

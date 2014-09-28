@@ -31,10 +31,6 @@ li.hack.media
     = link_to "https://twitter.com/share", class: "twitter-share-button", :'data-url' => hack_url(hack), :'data-text' => hack.body, :'data-via' => "GhettoLifeHack_", :'data-hashtags' => "ghettolifehack" do
       = image_tag "Tweet", alt: "Tweet"
       '
-    = link_to "https://twitter.com/share", class: "twitter-share-button", :'data-url' => "httpL//google.com", :'data-text' => "custom text", :'data-via' => "GhettoLifeHack_", :'data-hashtags' => "ghettolifehack" do
-      = image_tag "Tweet", alt: "Tweet"
-      '
-
     = link_to "FBshare"
     '
     = link_to hack do
@@ -42,8 +38,9 @@ li.hack.media
       = hack.comment_threads_count
       ' )
   
-    = link_to "Favorite"
-    '
+    = link_to favorite_hack_path(hack), method: :post, remote: true, title: "favorite", data: { favorite: true } do
+      = image_tag "star-off.png"
+      '
 
     = hack.created_at.to_datetime
     '
@@ -51,10 +48,6 @@ li.hack.media
     = link_to tweets_path(hack.body), method: :post do
       = "manual"
 
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+/ Tweet popup script
 
-    <a class="twitter-share-button" href="https://twitter.com/share" data-via="GhettoLifeHack_" data-url="http://google.com" data-text="custom text" data-hashtags="ghettolifehack">
-
-<img src="/images/Tweet" alt="Tweet" title=""></img>
-
-</a> 
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
