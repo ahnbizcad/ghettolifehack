@@ -9,8 +9,12 @@
 .comment[ id="comment-#{comment.id}" ]
   hr
 
-  - if matches_current_user?(comment.user)
-    = link_to "×", comment_path(comment), :method => :delete, :remote => true, :data => { :confirm => "Delete this comment?" }, :disable_with => "Deleting...", :class => 'close'
+  - if currently_admin? || matches_current_user?(comment.user)
+    = link_to edit_hack_path(comment.find_commentable) do
+      span[ class="glyphicon glyphicon-edit" ]
+    '
+    = link_to comment_path(comment), :method => :delete, :remote => true, :data => { :confirm => "Delete this comment?" }, :disable_with => "Deleting...", :class => 'close' do
+      span[ class="glyphicon glyphicon-remove" ]
 
   h5
     .comment-body

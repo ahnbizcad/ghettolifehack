@@ -4,50 +4,50 @@
 / = render partial: "hacks/hack", collection: @hacks, as: :hack
 
 li.hack.media
-  
+ 
+  - if currently_admin?
+    - if matches_current_user?(hack.user) || current_user.admin?
+      /- if not timed out
+      .close
+        = link_to edit_hack_path(hack) do
+          span[ class="glyphicon glyphicon-edit" ]
+        '
+        = link_to hack_path(hack), data: {:confirm => 'Are you sure?'}, :method => :delete do
+          span.[ class="glyphicon glyphicon-remove" ]
+
   .hack-body
     = hack.body
     
-  .hack-header   
+  .hack-header
     = link_to hack do
+      | GLH 
       | #
       = hack.id
       ' 
-
     ' by
 
     = link_to hack.user.username, hack.user
     '
 
-    - if user_signed_in? 
-      - if matches_current_user?(hack.user) || current_user.admin?
-        /- if not timed out
-        .close
-          = link_to 'Edit', edit_hack_path(hack)
-          '
-          = link_to 'Delete', hack_path(hack), data: {:confirm => 'Are you sure?'}, :method => :delete
+    | on
+    '
+    = hack.created_at.to_datetime
+    '
 
   .hack-footer
-    = link_to "https://twitter.com/share", class: "twitter-share-button", :'data-url' => hack_url(hack), :'data-text' => hack.body, :'data-via' => "GhettoLifeHack_", :'data-hashtags' => "ghettolifehack" do
-      = image_tag "Tweet", alt: "Tweet"
+    = link_to "https://twitter.com/share", class: "twitter-share-button", data: { count: "none", url: hack_url(hack), text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
       '
-    = link_to "FBshare"
+
+    .fb-share-button[ data-href="https://developers.facebook.com/docs/plugins/" ]
     '
-    = link_to hack do
-      | Comments(
+
+    = link_to hack, title: "Comments" do
+      span[class="glyphicon glyphicon-comment"]
+      | (
       = hack.comment_threads_count
       ' )
   
-    = link_to favorite_hack_path(hack), method: :post, remote: true, title: "favorite", data: { favorite: true } do
+    = link_to favorite_hack_path(hack), method: :post, remote: true, title: "Favorite", data: { favorite: true } do
       = image_tag "star-off.png"
       '
 
-    = hack.created_at.to_datetime
-    '
-    
-    = link_to tweets_path(hack.body), method: :post do
-      = "manual"
-
-/ Tweet popup script
-
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

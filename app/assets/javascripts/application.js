@@ -19,6 +19,9 @@
 // require angular-route
 // require angular-rails-templates
 //
+//= require twitter_button
+//= require facebook_button
+//
 //= require_tree .
 //
 //= require turbolinks
