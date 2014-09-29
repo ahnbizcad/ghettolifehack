@@ -38,7 +38,7 @@ li.hack.media
     = link_to "https://twitter.com/share", class: "twitter-share-button", data: { count: "none", url: hack_url(hack), text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
       '
 
-    .fb-share-button[ data-href="https://developers.facebook.com/docs/plugins/" ]
+    .fb-share-button[ data-href="#{root_path}" data-layout="button" ]
     '
 
     = link_to hack, title: "Comments" do
