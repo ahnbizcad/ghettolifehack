@@ -1,3 +1,4 @@
+###
 window.fbAsyncInit = ->
   FB.init
     appId: "your-app-id"
@@ -16,4 +17,4 @@ window.fbAsyncInit = ->
   return
 ) document, "script", "facebook-jssdk"
 
-
+###

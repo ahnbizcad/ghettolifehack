@@ -1,5 +1,6 @@
 class AuthenticationsController < Devise::OmniauthCallbacksController
 
+  # Fat controller. Move biz logic to model.
   def twitter
     omni = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
@@ -33,7 +34,7 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
 
   end
 
-    def facebook
+  def facebook
     omni = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
 

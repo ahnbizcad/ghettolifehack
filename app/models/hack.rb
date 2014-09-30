@@ -28,7 +28,6 @@ class Hack < ActiveRecord::Base
   #scope :favorites, joins(:favorites) & -> { joins(:favorites) }
 
 
-
   def user_image
     self.user.image
   end

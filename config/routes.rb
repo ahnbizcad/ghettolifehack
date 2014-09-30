@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
   root 'hacks#index'
   #get '*path' => 'application#index'
+
+  concern :paginatable do
+    get '(page/:page)', :action => :index, :on => :collection, :as => ''
+  end
   
+  resources :comments, only: [:create, :destroy] #Polymorphic 
+
+  resources :hacks, concerns: :paginatable do
+    member do
+      post "favorite"
+    end
+  end
+
   resources :users
 
   devise_for :users, :path => '', 
@@ -12,19 +24,9 @@ Rails.application.routes.draw do
                      :controllers => { omniauth_callbacks: "authentications", registrations: "registrations" }
                       
   get "/auth/:provider/callback", to: "authentications#:provider"
-
-  concern :paginatable do
-    get '(page/:page)', :action => :index, :on => :collection, :as => ''
-  end
-
-  resources :comments, only: [:create, :destroy]
-
-  resources :hacks, concerns: :paginatable do
-    member do
-      post "favorite"
-    end
-  end  
-
+  # vcap.me:3000
+  # evaluates to 127.0.0.1:3000
+  # Use as localhost:3000 substitute for callback url in provider app settings.
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, 
          :omniauthable, omniauth_providers: [ :twitter ]
 
-  has_many :authentications
+  has_many :authentications, dependent: :destroy
 
   has_many :hacks
   has_many :favorites
