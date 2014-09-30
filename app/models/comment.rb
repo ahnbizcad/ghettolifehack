@@ -31,7 +31,7 @@ class Comment < ActiveRecord::Base
   # want user to vote on the quality of comments.
   #acts_as_votable
 
-  belongs_to :commentable, :polymorphic => true#, counter_cache: :comment_threads_count
+  belongs_to :commentable, :polymorphic => true, counter_cache: :comment_threads_count
   belongs_to :user
 
   # Helper class method to lookup all comments assigned
