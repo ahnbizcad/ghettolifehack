@@ -2,14 +2,6 @@ Rails.application.routes.draw do
   root 'hacks#index'
   #get '*path' => 'application#index'
   
-  resources :comments, only: [:create, :destroy]
-
-  resources :hacks do
-    member do
-      post "favorite"
-    end
-  end
-
   resources :users
 
   devise_for :users, :path => '', 
@@ -21,7 +13,17 @@ Rails.application.routes.draw do
                       
   get "/auth/:provider/callback", to: "authentications#:provider"
 
-  resources :tweets, only: [:create]
+  concern :paginatable do
+    get '(page/:page)', :action => :index, :on => :collection, :as => ''
+  end
+
+  resources :comments, only: [:create, :destroy]
+
+  resources :hacks, concerns: :paginatable do
+    member do
+      post "favorite"
+    end
+  end  
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,17 +1,17 @@
 .row
-  .col-xs-3.pull-right
+  .col-xs-12.text-right
     | Sort by:
     / Implementation?
-    =link_to "Newest", remote: true
+    = link_to "Newest", remote: true
     / Implementation?
-    =link_to "Highest Voted", remote: true
+    = link_to "Highest Voted", remote: true
+
 
 .row
   .col-xs-12
-    div
-      = link_to 'New Hack', new_hack_path
-
     ul.hacks.media-list
       = render partial: "hacks/hack", collection: @hacks, as: :hack
 
-
+.row
+  .col-xs-12.text-center
+    = paginate @hacks

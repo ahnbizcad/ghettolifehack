@@ -10,7 +10,7 @@
   hr
 
   - if currently_admin? || matches_current_user?(comment.user)
-    = link_to edit_hack_path(comment.find_commentable) do
+    = link_to edit_hack_path(comment.find_commentable), :class =>'close' do
       span[ class="glyphicon glyphicon-edit" ]
     '
     = link_to comment_path(comment), :method => :delete, :remote => true, :data => { :confirm => "Delete this comment?" }, :disable_with => "Deleting...", :class => 'close' do

@@ -1,3 +1,9 @@
+window.fbAsyncInit = ->
+  FB.init
+    appId: "your-app-id"
+    xfbml: true
+    version: "v2.1"
+  return
 
 ((d, s, id) ->
   js = undefined
