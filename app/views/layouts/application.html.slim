@@ -10,24 +10,27 @@ html
     meta name="viewport" content="initial-scale=1.0"
     
   body
-    / To enable Facebook share button throughout the app.
-    #fb-root
+    .container-fluid
+      .row
+        == render 'layouts/header'  
+      .row
+        == render 'layouts/navbar'
 
 
-    == render 'layouts/header'  
-    == render 'layouts/navbar'
-
-    main
-      .container-fluid
-        - if notice
-          p.notice= notice
-        - if alert
-          .alert.alert-dismissable[ role="alert" data-dismiss="alert" ]
-            p.alert= alert
+      .row
+        main.col-sm-9
+          - if notice
+            p.notice= notice
+          - if alert
+            .alert.alert-dismissable[ role="alert" data-dismiss="alert" ]
+              p.alert= alert
+      .row
         = yield
 
-    == render 'layouts/sidebar'
-    == render 'layouts/footer'
+      == render 'layouts/sidebar'
+
+      .row
+        == render 'layouts/footer'
 
     - if Rails.env.development?
       = params.inspect

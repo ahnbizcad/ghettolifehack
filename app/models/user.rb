@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, 
-         :omniauthable, omniauth_providers: [ :twitter ]
+         :omniauthable, omniauth_providers: [ :twitter, :facebook ]
 
   has_many :authentications, dependent: :destroy
 
@@ -77,17 +77,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_tweet(content)
-    twitter_client = Twitter::REST::Client.new do |config|
-      config.consumer_key =         ENV['TWITTER_CONSUMER_KEY']
-      config.consumer_secret =      ENV['TWITTER_CONSUMER_SECRET']
-      
-      config.access_token =         ENV['TWITTER_YOUR_ACCESS_TOKEN']
-      config.access_token_secret =  ENV['TWITTER_YOUR_ACCESS_SECRET']
-    end
-    # Call, and define elsewhere the method to parse, shorten, and insert the tweet
-    twitter_client.update(content)
-  end
+  # Handled by tweet button code instead.
+  #def send_tweet(content)
+  #  twitter_client = Twitter::REST::Client.new do |config|
+  #    config.consumer_key =         ENV['TWITTER_CONSUMER_KEY']
+  #    config.consumer_secret =      ENV['TWITTER_CONSUMER_SECRET']
+  #    
+  #    config.access_token =         ENV['TWITTER_YOUR_ACCESS_TOKEN']
+  #    config.access_token_secret =  ENV['TWITTER_YOUR_ACCESS_SECRET']
+  #  end
+  #  # Call, and define elsewhere the method to parse, shorten, and insert the tweet
+  #  twitter_client.update(content)
+  #end
 
 end
 
