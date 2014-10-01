@@ -5,17 +5,19 @@ window.fbAsyncInit = ->
     version: "v2.1"
   return
 
-# test correct syntax for APP ID### above and jssrc below dynamic interpolation
-
 ((d, s, id) ->
+  app_id = <%= ENV['FACEBOOK_APP_ID'] %>
+
   js = undefined
   fjs = d.getElementsByTagName(s)[0]
   return  if d.getElementById(id)
   js = d.createElement(s)
   js.id = id
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=#{id}&version=v2.1"
+  js.src = "//connect.facebook.net/en_US/sdk.js";
   fjs.parentNode.insertBefore js, fjs
-  return
+  return  
 ) document, "script", "facebook-jssdk"
+
+
 
 
