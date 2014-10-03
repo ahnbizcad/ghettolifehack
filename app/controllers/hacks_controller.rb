@@ -48,7 +48,7 @@ class HacksController < ApplicationController
     @hack.user_id = current_user.id
 
     respond_to do |format|
-      if @hack.save
+      if @hack.save        
         format.html { redirect_to hacks_path, notice: 'Hack was successfully submitted.' }
         format.json { render :show, status: :created, location: @hack }
       else

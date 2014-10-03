@@ -15,4 +15,12 @@
 
 class Authentication < ActiveRecord::Base
   belongs_to :user
+
+#
+
+  SOCIALS = {
+    twitter:  'Twitter',
+    facebook: 'Facebook'
+  }
+  
 end

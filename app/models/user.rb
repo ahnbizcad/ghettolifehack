@@ -49,20 +49,17 @@ class User < ActiveRecord::Base
 
 #
 
-  SOCIALS = {
-    twitter:  'Twitter',
-    facebook: 'Facebook'
-  }
-
-#
-
   def apply_omniauth(omni)
-    authentications.build(:provider => omni['provider'],
-                          :uid => omni['uid'],
-                          :token => token = omni['credentials']['token'],
-                          :token_secret => omni['credentials']['secret'])
-  end
+    # Sets User model info as necessary, depending on existing values, and provided values
+    self.email = omni['info']['email'] if self.email.blank? 
+    self.username = omni['info']['nickname'] if self.username.blank? 
 
+    self.authentications.build(
+      :provider      => omni['provider'],
+      :uid           => omni['uid'],
+      :token         => omni['credentials']['token'],
+      :token_secret  => omni['credentials']['secret'])
+  end
 
   def password_required?
     super && (authentications.empty? || !password.blank?)
@@ -79,7 +76,19 @@ class User < ActiveRecord::Base
     end
   end
 
-  
+#  def update_with_password(params={}) 
+#    if params[:password].blank? 
+#      params.delete(:password) 
+#      params.delete(:password_confirmation) if params[:password_confirmation].blank? 
+#    end 
+#    update_attributes(params) 
+#  end
+
+
+
+end
+
+###############
 
   # Handled by tweet button code instead.
   #def send_tweet(content)
@@ -94,7 +103,6 @@ class User < ActiveRecord::Base
   #  twitter_client.update(content)
   #end
 
-end
 
 ########################
 # railscast #235 way

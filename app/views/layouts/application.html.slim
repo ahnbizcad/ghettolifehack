@@ -31,8 +31,9 @@ html
         main
           .col-sm-9
             = yield
-          .col-sm-3
-            == render 'layouts/sidebar'
+          - unless devise_controller?
+            .col-sm-3
+              == render 'layouts/sidebar'
 
       .row
         == render 'layouts/footer'
@@ -40,6 +41,7 @@ html
     - if Rails.env.development?
       = params.inspect
       = debug(params)
+      = session[:omniauth]
 
 /FEATURES
       / login via twitter, fb
