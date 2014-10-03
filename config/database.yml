@@ -28,4 +28,4 @@ production:
   database: glh_production
   host: ghettolifehack.com
   username: postgres
-  password: 
+  password: ENV['DATABASE_PASSWORD_PRODUCTION']
