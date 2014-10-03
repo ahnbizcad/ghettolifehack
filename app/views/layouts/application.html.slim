@@ -7,15 +7,18 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-    meta type="viewport" content="initial-scale=1.0"
-    
+    meta name="viewport" content="initial-scale=1.0"    
   body
+    - if Rails.env.development?
+      = params.inspect
+      = debug(params)
+      = session[:omniauth]
+
     .container-fluid
       .row
         == render 'layouts/header'  
       .row
         == render 'layouts/navbar'
-
 
       .row
         .col-xs-12
@@ -31,17 +34,14 @@ html
         main
           .col-sm-9
             = yield
-          - unless devise_controller?
-            .col-sm-3
-              == render 'layouts/sidebar'
+          /- unless devise_controller?
+          .col-sm-3
+            == render 'layouts/sidebar'
 
       .row
         == render 'layouts/footer'
 
-    - if Rails.env.development?
-      = params.inspect
-      = debug(params)
-      = session[:omniauth]
+    
 
 /FEATURES
       / login via twitter, fb
