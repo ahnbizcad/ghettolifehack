@@ -6,9 +6,6 @@ GENERAL VARIABLES
 Mixins - Dimensions
 ----------*/
 
-$body-padding-xs: 108px;
-$body-padding-sm: 53px;
-
 /* 
 Responsive widths
 */
@@ -27,3 +24,8 @@ Mixins - Colors, Styling
 ----------*/
 
 $lightblue: #99D8F7;
+$darkblue: #355693;
+
+$gradient_lightblue: lighten($lightblue, 20%);
+$gradient_darkblue: lighten($darkblue, 50%);
+

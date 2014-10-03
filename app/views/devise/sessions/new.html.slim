@@ -9,7 +9,7 @@
         = f.input :remember_me, as: :boolean, label: false, inline_label: true if devise_mapping.rememberable?
         / https://github.com/rafaelfranca/simple_form-bootstrap/pull/28#issuecomment-28197768
       .form-actions
-        = f.button :submit, "Sign in"
+        = f.button :submit, "Log In"
 
     = render "devise/shared/links"
   
@@ -17,4 +17,16 @@
     h2
       | Log In With
     = render "devise/shared/socials"
+
+|
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1469614829979932&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+.fb-login-button[ data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false" ]
 

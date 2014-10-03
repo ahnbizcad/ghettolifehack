@@ -7,7 +7,7 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-    meta name="viewport" content="initial-scale=1.0"
+    meta type="viewport" content="initial-scale=1.0"
     
   body
     .container-fluid
@@ -18,16 +18,21 @@ html
 
 
       .row
-        main.col-sm-9
-          - if notice
-            p.notice= notice
-          - if alert
-            .alert.alert-dismissable[ role="alert" data-dismiss="alert" ]
-              p.alert= alert
-      .row
-        = yield
+        .col-xs-12
+          - flash.each do |type, msg|
+            - if msg.is_a?(String)
+              /                                          limit to two types  bs green : bs red
+              .alert.alert-dismissable[ class=('alert-'+(type == "notice" ? "success" : "danger")) role="alert" data-dismiss="alert" ]
+                div[ id="flash-#{type}" ]
+                  = msg
+                button.close[ type="button" data-dismiss="alert" aria-hidden="true"]
 
-      == render 'layouts/sidebar'
+      .row
+        main
+          .col-sm-9
+            = yield
+          .col-sm-3
+            == render 'layouts/sidebar'
 
       .row
         == render 'layouts/footer'

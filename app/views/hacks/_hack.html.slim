@@ -3,17 +3,18 @@
 / index.html.slim - hacks
 / = render partial: "hacks/hack", collection: @hacks, as: :hack
 
+/ show.html.slim - hacks
+/ = render partial: "hacks/hack", :locals => { hack: @hack }
+
 li.hack.media
- 
-  - if currently_admin?
-    - if matches_current_user?(hack.user) || current_user.admin?
-      /- if not timed out
-      .close
-        = link_to edit_hack_path(hack) do
-          span[ class="glyphicon glyphicon-edit" ]
-        '
-        = link_to hack_path(hack), data: {:confirm => 'Are you sure?'}, :method => :delete do
-          span.[ class="glyphicon glyphicon-remove" ]
+
+  - if currently_admin? || ( matches_current_user?(hack.user) && !timed_out?(hack) )
+    .close
+      = link_to edit_hack_path(hack) do
+        span[ class="glyphicon glyphicon-edit" ]
+      '
+      = link_to hack_path(hack), data: {:confirm => 'Are you sure?'}, :method => :delete do
+        span.[ class="glyphicon glyphicon-remove" ]
 
   .hack-body
     = hack.body
@@ -29,10 +30,10 @@ li.hack.media
     = link_to hack.user.username, hack.user
     '
 
-    | on
-    '
-    = hack.created_at.to_datetime
-    '
+    /| on
+    /'
+    /= hack.created_at.to_datetime
+    /'
 
   .hack-footer
     = link_to "https://twitter.com/share", class: "twitter-share-button", data: { count: "none", url: hack_url(hack), text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
@@ -47,6 +48,6 @@ li.hack.media
       = hack.comment_threads_count
       ' )
   
-    = link_to favorite_hack_path(hack), method: :post, remote: true, title: "Favorite", data: { favorite: true } do
+    = link_to favorite_hack_path(hack), method: :post, remote: true, title: "Add to Favorites", data: { favorite: true } do
       = image_tag "star-off.png"
       '

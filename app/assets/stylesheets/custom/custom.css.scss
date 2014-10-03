@@ -1,9 +1,21 @@
 body {
-  background-color: #FAFAFA;
+  > .container-fluid {
+    background-image: linear-gradient(white, $gradient_darkblue, $darkblue);
+  }
+  
+}
+
+footer {
+  background-color: $darkblue;
+}
+
+header {
+
+
 }
 
 #navbar {
-  background-color: #355693;
+  background-color: $darkblue;
   
   >ul { 
     white-space: nowrap;

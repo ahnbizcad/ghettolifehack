@@ -63,12 +63,14 @@ class User < ActiveRecord::Base
                           :token_secret => omni['credentials']['secret'])
   end
 
+
   def password_required?
     super && (authentications.empty? || !password.blank?)
   end
-
   # Overrides Devise method.
-  # To update password if user only authenticated through Twitter, and user was created with blank pw.
+  # To update password if user only authenticated through Twitter, 
+  # and user was created with blank pw.
+
   def update_with_password(params, *options)
     if encrypted_password.blank?
       update_attributes(params, *options)
@@ -76,6 +78,8 @@ class User < ActiveRecord::Base
       super
     end
   end
+
+  
 
   # Handled by tweet button code instead.
   #def send_tweet(content)

@@ -16,18 +16,16 @@ ONLY xs devices (phones, 1px to 767px) (doesn't cascade)
 /*----------------------------------------
 xs is default. Smaller sizes cascade to larger sizes. Flow structure.
 ----------------------------------------*/
-body {
-  padding-top: $body-padding-xs;
-}
 
+main {
+  min-height: 900px;
+}
 
 /*----------------------------------------
 sm devices (tablets, 748px and up)
 ----------------------------------------*/
 @media only screen and (min-width: $screen-sm){ 
-  body {
-    padding-top: $body-padding-sm;
-  }
+
 
 
 }

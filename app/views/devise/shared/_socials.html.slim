@@ -2,6 +2,12 @@
   - resource_class.omniauth_providers.each do |provider|
     / resource_name = "user", and appends the method name.
     = link_to omniauth_authorize_path(resource_name, provider) do
-      = image_tag "#{provider.to_s}.png"
-    <br>
+      - if !user_signed_in?
+        = image_tag "#{provider.to_s}.png"
+        <br>
+      - else
+        - if current_user.authentications.find_by_provider(provider)
+          = image_tag "#{provider.to_s}.png"
+        - else
+          = image_tag "#{provider.to_s}_greyed.png"
 
