@@ -45,15 +45,14 @@ class User < ActiveRecord::Base
   validates :username,
             presence: true,
             :uniqueness => { case_sensitive: false },
-            length: { in: 4..20 }
+            length: { in: 4..24 }
 
 #
 
   def apply_omniauth(omni)
-    # Sets User model info as necessary, depending on existing values, and provided values
-    self.email = omni['info']['email'] if self.email.blank? 
-    self.username = omni['info']['nickname'] if self.username.blank? 
-
+    # Sets User model info as necessary, depending on existing values and provided values
+    self.email    = omni['info']['email']    if self.email.blank?
+    self.username = omni['info']['nickname'] if self.username.blank?
     self.authentications.build(
       :provider      => omni['provider'],
       :uid           => omni['uid'],
@@ -61,6 +60,7 @@ class User < ActiveRecord::Base
       :token_secret  => omni['credentials']['secret'])
   end
 
+  # Override devise method
   def password_required?
     super && (authentications.empty? || !password.blank?)
   end

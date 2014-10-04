@@ -10,7 +10,6 @@ html
     meta name="viewport" content="initial-scale=1.0"    
   body
     - if Rails.env.development?
-      = params.inspect
       = debug(params)
       = session[:omniauth]
 
@@ -26,9 +25,13 @@ html
             - if msg.is_a?(String)
               /                                          limit to two types  bs green : bs red
               .alert.alert-dismissable[ class=('alert-'+(type == "notice" ? "success" : "danger")) role="alert" data-dismiss="alert" ]
+                button.close[ type="button" data-dismiss="alert" aria-hidden="true"]
+                  span[ aria-hidden="true"] 
+                    | &times;
+                  span[ class="sr-only" ]
+                    | Close
                 div[ id="flash-#{type}" ]
                   = msg
-                button.close[ type="button" data-dismiss="alert" aria-hidden="true"]
 
       .row
         main

@@ -22,8 +22,13 @@ Rails.application.routes.draw do
                                       :sign_up => "sign-up", 
                                       :account_update => "account-settings" },
                      :controllers => { omniauth_callbacks: "authentications", registrations: "registrations" }
-                      
+
   get "/auth/:provider/callback", to: "authentications#:provider"
+  
+  #devise_scope :user do
+  #  get "/registrations/catch", to: "registrations#catch"
+  #end
+
   # vcap.me:3000
   # evaluates to 127.0.0.1:3000
   # Use as localhost:3000 substitute for callback url in provider app settings.

@@ -1,5 +1,9 @@
 
 /* prevent navbar collapsing*/
+.navbar-collapse.collapse {
+  display: block !important;
+}
+
 .navbar-header {
   float: left;
 }
