@@ -33,7 +33,7 @@ end
 
 gem 'figaro', '~> 1.0.0'
 
-gem 'devise', '~> 3.3.0'
+gem 'devise', '~> 3.4.0'
 
 gem 'twitter', '~> 5.11.0'
 gem 'omniauth-twitter'

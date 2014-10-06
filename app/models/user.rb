@@ -42,12 +42,18 @@ class User < ActiveRecord::Base
   has_many :comments
   acts_as_voter
 
+  validates :email,
+            presence: true,
+            :length => { in: 10..24 } #use regex 
+
   validates :username,
             presence: true,
             :uniqueness => { case_sensitive: false },
-            length: { in: 4..24 }
+            :length => { in: 4..24 }
 
-#
+  # Password length validation in 
+  # devise.rb initializer
+  # config.password_length = 
 
   def apply_omniauth(omni)
     # Sets User model info as necessary, depending on existing values and provided values
@@ -57,105 +63,44 @@ class User < ActiveRecord::Base
       :provider      => omni['provider'],
       :uid           => omni['uid'],
       :token         => omni['credentials']['token'],
-      :token_secret  => omni['credentials']['secret'])
+      :token_secret  => omni['credentials']['secret'],
+    )
   end
 
-  # Override devise method
+  # Overrides Devise method
+  # For logins and signins
   def password_required?
-    super && (authentications.empty? || !password.blank?)
+    # super = !persisted? || !password.nil? || !password_confirmation.nil?
+    super && (authentications.blank?)    
   end
-  # Overrides Devise method.
-  # To update password if user only authenticated through Twitter, 
-  # and user was created with blank pw.
+
+ #def current_password_required?(params)
+ #  encrypted_password.present? && params[:user][:password].present?
+ #end
 
   def update_with_password(params, *options)
-    if encrypted_password.blank?
-      update_attributes(params, *options)
-    else
-      super
-    end
-  end
+        current_password = params.delete(:current_password)
 
-#  def update_with_password(params={}) 
-#    if params[:password].blank? 
-#      params.delete(:password) 
-#      params.delete(:password_confirmation) if params[:password_confirmation].blank? 
-#    end 
-#    update_attributes(params) 
-#  end
+        if params[:password].blank?
+          params.delete(:password)
+          params.delete(:password_confirmation) if params[:password_confirmation].blank?
+        end
 
+        # Different from original
+        has_authentication_but_not_encrypted_password = encrypted_password.blank?   && authentications.present?
+        has_encrypted_password_but_not_changing       = encrypted_password.present? && params[:password].blank?
+        #
+        result = if valid_password?(current_password) || has_encrypted_password_but_not_changing || has_authentication_but_not_encrypted_password
+          update_attributes(params, *options)
+        else
+          self.assign_attributes(params, *options)
+          self.valid?
+          self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+          false
+        end
 
+        clean_up_passwords
+        result
+      end
 
 end
-
-###############
-
-  # Handled by tweet button code instead.
-  #def send_tweet(content)
-  #  twitter_client = Twitter::REST::Client.new do |config|
-  #    config.consumer_key =         ENV['TWITTER_CONSUMER_KEY']
-  #    config.consumer_secret =      ENV['TWITTER_CONSUMER_SECRET']
-  #    
-  #    config.access_token =         ENV['TWITTER_YOUR_ACCESS_TOKEN']
-  #    config.access_token_secret =  ENV['TWITTER_YOUR_ACCESS_SECRET']
-  #  end
-  #  # Call, and define elsewhere the method to parse, shorten, and insert the tweet
-  #  twitter_client.update(content)
-  #end
-
-
-########################
-# railscast #235 way
-
-
-
-
-
-
-#########################
-#
-#  def self.from_omniauth(auth, the_current_user)
-#    authentication = Authentication.where(:provider => auth.provider, 
-#                                          :uid => auth.uid.to_s, 
-#                                          :token => auth.credentials.token, 
-#                                          :secret => auth.credentials.secret).first_or_initialize
-#      authentication.profile_page = auth.info.urls.first.last unless authentication.persisted?
-#    
-#    # Handle twitter not providing email.
-#    if authentication.user.blank?
-#      user = the_current_user.nil? ? User.where('email = ?', auth['info']['email']).first : the_current_user
-#      if user.blank?
-#        user = User.new
-#        #user.skip_confirmation!
-#        user.password = Devise.friendly_token[0, 20]
-#        user.fetch_details(auth)
-#        user.save
-#      end
-#      authentication.user = user
-#      authentication.save
-#    end
-#    authentication.user
-#  end
-#
-#  def self.new_with_session(params, session)
-#    if session["devise.user_attributes"]
-#      new(session["devise.user_attributes"], without_protection: true) do |user|
-#        user.attributes = params
-#        user.valid?
-#      end
-#    else
-#      super # references devise's create new user instance.
-#    end
-#  end
-#
-#  def fetch_details(auth)
-#    self.username = auth.info.name
-#    self.email = auth.info.email
-#    self.image = URI.parse(auth.info.image)
-#  end
-#
-#  def password_required?
-#    super && Authentication.provider.blank? 
-#    # "provider" attribute isn't on user table. how to reference it from authentication model? 
-#    # Is checking pre-existing values required - what if not signed in?
-#  end

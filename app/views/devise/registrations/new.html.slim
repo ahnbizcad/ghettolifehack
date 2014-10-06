@@ -1,19 +1,8 @@
-= resource.attributes
-<br>
-<br>
-= resource.authentications[0].attributes
-<br>
-<br>
-= resource.authentications.empty?
-<br>
-<br>
-= !resource.password.blank?
-
 .row
   .col-xs-12.col-sm-6
     h2 Sign Up
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = f.error_notification
+      /= f.error_notification
       .form-inputs
         = f.input :email, required: true, autofocus: true
         - if f.object.password_required?

@@ -10,8 +10,8 @@ html
     meta name="viewport" content="initial-scale=1.0"    
   body
     - if Rails.env.development?
+      = session["devise.omni"]
       = debug(params)
-      = session[:omniauth]
 
     .container-fluid
       .row

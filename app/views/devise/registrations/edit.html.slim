@@ -3,21 +3,29 @@
     | Account Settings
 
 .col-xs-12
-  h3 Add Social Media Accounts
   = render "devise/shared/socials"
-
+      
 .col-xs-12
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-    = f.error_notification
+    /= f.error_notification
     .form-inputs
-      = f.input :current_password, hint: "we need your current password to confirm your changes", required: true, autofocus: true
       = f.input :email, required: true
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         p
           | Currently waiting confirmation for: #{resource.unconfirmed_email}
+      
       = f.input :username, required: true
-      = f.input :password, autocomplete: "off", hint: "Leave blank if you don't want to change your password", required: false
-      = f.input :password_confirmation, required: false
+
+      <hr>
+
+      #password-group
+        = f.input :password, autocomplete: "off", hint: "Leave blank if you don't want to change your password", required: false
+        
+        = f.input :password_confirmation, required: false
+        
+        - if f.object.encrypted_password.present? #ajax when password field is not empty (good for angular)
+          = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+
     .form-actions
       = f.button :submit, "Update"
 

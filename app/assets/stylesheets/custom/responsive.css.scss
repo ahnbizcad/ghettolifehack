@@ -46,3 +46,16 @@ lg devices (large desktops, 1200px and up)
 
 }
 
+
+/*----------------------------------------
+Misc touchups
+----------------------------------------*/
+
+/*  Very useful pattern  for spacing collections */
+/* 
+@media (max-width: 991px) { 
+  [class*="col-"]:not(:first-child){
+      margin-top: 40px;
+  }
+}
+*/
