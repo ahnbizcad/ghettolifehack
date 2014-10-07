@@ -4,8 +4,9 @@
 ul#profile-bar.nav.nav-tabs
   li#profile-favorites
     = link_to "#", role: "tab", data: { toggle: "tab" } do
-      | Favorites
-      /= user.favorites_count
+      | Favorites(
+      = user.favorites_count
+      | )
   li#profile-hacks
     = link_to "#", role: "tab", data: { toggle: "tab" } do
       | GLHs(

@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     def timed_out?(object, time=5*60*1000)
       (Time.now - object.created_at > time) ? true : false
     end
-
+    
     helper_method :timed_out?
 
   private

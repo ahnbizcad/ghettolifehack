@@ -10,7 +10,7 @@
 #
 
 class Favorite < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   belongs_to :hack
 
   validates_uniqueness_of :user_id, scope: [:hack_id]
