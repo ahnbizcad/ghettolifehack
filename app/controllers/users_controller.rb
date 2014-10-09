@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @favorite_hacks = @user.favorite_hacks
     @hacks = @user.hacks.all
-    #@favorites = @user.hacks.favorites
     @comments = @user.comments.all
   end
 

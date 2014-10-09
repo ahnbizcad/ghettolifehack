@@ -1,10 +1,8 @@
 doctype html
 html
   head
-    title 
-      = @title
-    <!--[if IE]> get a better browser <![endif]-->
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    title = @title
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     meta name="viewport" content="initial-scale=1.0"    
@@ -14,10 +12,12 @@ html
       = debug(params)
 
     .container-fluid
+      == render 'layouts/header'
+      == render 'layouts/navbar'
+      
       .row
-        == render 'layouts/header'  
-      .row
-        == render 'layouts/navbar'
+        .col-xs-12
+          == render 'layouts/ad'
 
       .row
         .col-xs-12
@@ -33,22 +33,21 @@ html
                 div[ id="flash-#{type}" ]
                   = msg
 
-      .row
+      - if hide_sidebar?
         main
-          .col-sm-9
-            = yield
-          /- unless devise_controller?
-          .col-sm-3
+          = yield
+      - else
+        .row
+          .col-xs-12.col-sm-9
+            main
+              = yield
+          .col-xs-12.col-sm-3
             == render 'layouts/sidebar'
 
       .row
         == render 'layouts/footer'
 
-    
-
-/FEATURES
-      / login via twitter, fb
-      /tweet with @ghettolifehack, truncate, link
-      /fb share
-      /moderator points
-      /badges - hard at work
+  /FEATURES
+  /fb share
+  /moderator points
+  /badges - hard at work

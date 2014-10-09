@@ -1,10 +1,13 @@
-header
-  = image_tag "header"
+.row
+  / html elements need to be between .row and .col-* to apply full width background
+  header
+    .col-xs-12
+    = image_tag "header"
 
-  #social-follow-buttons.col-xs-3
-    #twitter-follow-button
-      = link_to "https://twitter.com/GhettoLifeHack_", class: "twitter-follow-button", data: { "show-count" => "false", dnt: "true" } do
-        | Follow @GhettoLifeHack_
+    #social-follow-buttons.col-xs-3
+      #twitter-follow-button
+        = link_to "https://twitter.com/GhettoLifeHack_", class: "twitter-follow-button", data: { "show-count" => "false", dnt: "true" } do
+          | Follow @GhettoLifeHack_
 
-    #facebook-follow-button
-      .fb-follow[ data-href="https://www.facebook.com/ghettolifehack" data-colorscheme="light" data-layout="standard" data-width="150" data-show-faces="true"]
+      #facebook-follow-button
+        .fb-follow[ data-href="https://www.facebook.com/ghettolifehack" data-colorscheme="light" data-layout="standard" data-width="150" data-show-faces="true"]

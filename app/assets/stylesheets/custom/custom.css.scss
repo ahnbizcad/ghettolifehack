@@ -72,4 +72,17 @@ header {
 
 #profile-bar {
   background-color: #5599CC;
+
+  li.active a {
+    color: #428BCA;
+  }
+
+  a { 
+    color: #FFF;
+  }
+
+  a:hover {
+    color: #2A6496;
+  }
 }
+

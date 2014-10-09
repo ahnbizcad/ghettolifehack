@@ -1,21 +1,23 @@
-nav#navbar.navbar.navbar-default[ role="navigation" ]
-  .col-xs-12
-    .navbar-header
-      = link_to root_path, class: "navbar-brand" do
-        = image_tag "Ghetto Lifehack", class: "img-responsive"
+.row
+  / html elements need to be between .row and .col-* to apply full width background
+  nav#navbar.navbar.navbar-default[ role="navigation" ]
+    .col-xs-12
+      .navbar-header
+        = link_to root_path, class: "navbar-brand" do
+          = image_tag "ghettolifehack.png"
 
-    ul#navbar-main.nav.navbar-nav
-      li= link_to "Submit hack", new_hack_path      
+      ul#navbar-main.nav.navbar-nav
+        li= link_to "Submit hack", new_hack_path      
 
-    ul#login.nav.navbar-nav.navbar-right
-      -if user_signed_in?
-        li= link_to current_user do
-          = image_tag current_user.image
-          = current_user.username
-        li= link_to edit_user_registration_path, title: "Account Settings" do
-          i.glyphicon.glyphicon-cog
-        li= link_to "Log Out", destroy_user_session_path, method: :delete
-      -else
-        li= link_to "Sign Up", new_user_registration_path
-        li= link_to "Log In", new_user_session_path
-        
+      ul#login.nav.navbar-nav.navbar-right
+        -if user_signed_in?
+          li= link_to current_user do
+            = image_tag current_user.image
+            = current_user.username
+          li= link_to edit_user_registration_path, title: "Account Settings" do
+            i.glyphicon.glyphicon-cog
+          li= link_to "Log Out", destroy_user_session_path, method: :delete
+        -else
+          li= link_to "Sign Up", new_user_registration_path
+          li= link_to "Log In", new_user_session_path
+          

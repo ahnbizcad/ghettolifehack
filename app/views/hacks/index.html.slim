@@ -6,10 +6,9 @@
     / Implementation?
     = link_to "Highest Voted", remote: true
 
-
 .row
   .col-xs-12
-    ul.hacks.media-list
+    ul.media-list.hacks
       = render partial: "hacks/hack", collection: @hacks, as: :hack
 
 .row

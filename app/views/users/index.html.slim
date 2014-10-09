@@ -1,15 +1,17 @@
-h1 Listing Members
+.row
+  .col-xs-12
+    h1 Listing Members
 
-/ most active day week month year
-/ most points
-/ most posts
-/ most moderator points
+    / most active day week month year
+    / most points
+    / most posts
+    / most moderator points
 
-  - @users.each do |user|
-    = link_to 'Show', user
-    = link_to 'Edit', edit_user_path(user)
-    = link_to 'Destroy', user, data: {:confirm => 'Are you sure?'}, :method => :delete
+      - @users.each do |user|
+        = link_to 'Show', user
+        = link_to 'Edit', edit_user_path(user)
+        = link_to 'Destroy', user, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
+    br
 
-= link_to 'New User', new_user_path
+    = link_to 'New User', new_user_path

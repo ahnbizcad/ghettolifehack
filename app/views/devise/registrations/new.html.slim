@@ -1,5 +1,10 @@
 .row
-  .col-xs-12.col-sm-6
+  .col-xs-12.col-sm-5.col-sm-push-7
+    h2
+      | Sign Up With
+    = render "devise/shared/socials"
+
+  .col-xs-12.col-sm-7.col-sm-pull-5
     h2 Sign Up
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       /= f.error_notification
@@ -13,8 +18,5 @@
         = f.button :submit, "Sign up"
 
     = render "devise/shared/links"
-      
-  .col-xs-12.col-sm-6
-    h2
-      | Sign Up With
-    = render "devise/shared/socials"
+
+

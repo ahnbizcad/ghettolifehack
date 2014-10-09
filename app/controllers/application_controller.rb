@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :title
 
-  
-
 
   protected
 
@@ -19,8 +17,7 @@ class ApplicationController < ActionController::Base
 
     def timed_out?(object, time=5*60*1000)
       (Time.now - object.created_at > time) ? true : false
-    end
-    
+    end    
     helper_method :timed_out?
 
   private

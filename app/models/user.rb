@@ -37,24 +37,33 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [ :twitter, :facebook ]
 
   has_many :authentications, dependent: :destroy
-
   has_many :hacks
+ 
+  has_many :favorite_hacks, through: :favorites, source: :hack
   has_many :favorites
-  has_many :comments
+
+  has_many :comments, as: :commentable
   acts_as_voter
+
+  
+
 
   validates :email,
             presence: true,
             :length => { in: 10..24 } #use regex 
-
   validates :username,
             presence: true,
             :uniqueness => { case_sensitive: false },
             :length => { in: 4..24 }
-
-  # Password length validation in 
+  # Password length validation is in 
   # devise.rb initializer
   # config.password_length = 
+
+
+  ### LoD getters
+
+
+  ### Authentication
 
   def apply_omniauth(omni)
     # Sets User model info as necessary, depending on existing values and provided values
@@ -69,39 +78,39 @@ class User < ActiveRecord::Base
   end
 
   # Overrides Devise method
-  # For logins and signins
+  # For logins and signins only, not for edit registration
   def password_required?
     # super = !persisted? || !password.nil? || !password_confirmation.nil?
     super && (authentications.blank?)    
   end
 
- #def current_password_required?(params)
- #  encrypted_password.present? && params[:user][:password].present?
- #end
+  #def current_password_required?(params)
+  #  encrypted_password.present? && params[:user][:password].present?
+  #end
 
   def update_with_password(params, *options)
-        current_password = params.delete(:current_password)
+    current_password = params.delete(:current_password)
 
-        if params[:password].blank?
-          params.delete(:password)
-          params.delete(:password_confirmation) if params[:password_confirmation].blank?
-        end
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
 
-        # Different from original
-        has_authentication_but_not_encrypted_password = encrypted_password.blank?   && authentications.present?
-        has_encrypted_password_but_not_changing       = encrypted_password.present? && params[:password].blank?
-        #
-        result = if valid_password?(current_password) || has_encrypted_password_but_not_changing || has_authentication_but_not_encrypted_password
-          update_attributes(params, *options)
-        else
-          self.assign_attributes(params, *options)
-          self.valid?
-          self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
-          false
-        end
+    # Different from original
+    has_authentication_but_not_encrypted_password = encrypted_password.blank?   && authentications.present?
+    has_encrypted_password_but_not_changing       = encrypted_password.present? && params[:password].blank?
+    #
+    result = if valid_password?(current_password) || has_encrypted_password_but_not_changing || has_authentication_but_not_encrypted_password
+      update_attributes(params, *options)
+    else
+      self.assign_attributes(params, *options)
+      self.valid?
+      self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+      false
+    end
 
-        clean_up_passwords
-        result
-      end
+    clean_up_passwords
+    result
+  end
 
 end

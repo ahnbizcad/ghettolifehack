@@ -16,13 +16,17 @@
 
 class Hack < ActiveRecord::Base
   belongs_to :user, counter_cache: true
+  
+  has_many :users, through: :favorites
   has_many :favorites
+
   acts_as_commentable
-  acts_as_votable
+  acts_as_votable  
+
 
   scope :by_newest,         -> { order("created_at DESC") }
   #scope :by_highest_rating, -> { order("rating DESC") } # with vote table?
-  
+  #scope :favorites_of_user, ->(user_id) { joins(:favorites).where(user_id: user_id) }
 
   # Favorite is different model from Hack, inner join? Also, user id
   #scope :favorites, joins(:favorites) & -> { joins(:favorites) }

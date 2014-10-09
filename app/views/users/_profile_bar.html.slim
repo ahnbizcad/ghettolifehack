@@ -1,0 +1,35 @@
+
+
+
+/show.html.slim - users
+/= render partial: 'users/profile_bar', locals: { user: @user, favorite_hacks: @favorite_hacks, hacks: @hacks, comments: @comments }
+
+ul#profile-bar.nav.nav-tabs[ role="tablist" ]
+  li.active
+    = link_to "#profile-favorites", role: "tab", data: { toggle: "tab" } do
+      | Favorites(
+      = user.favorites_count
+      | )
+  li
+    = link_to "#profile-hacks", role: "tab", data: { toggle: "tab" } do
+      | Submitted(
+      = user.hacks_count
+      | )
+  li
+    = link_to "#profile-comments", role: "tab", data: { toggle: "tab" } do
+      | Comments(
+      = user.comment_threads_count
+      | )
+
+.tab-content
+  #profile-favorites.tab-pane.fade.in
+    ul#favorites-hacks
+      = render partial: 'hacks/hack', collection: favorite_hacks, as: :hack
+
+  #profile-hacks.tab-pane.fade
+    ul#hacks
+      = render partial: 'hacks/hack', collection: hacks, as: :hack
+
+  #profile-comments.tab-pane.fade
+    ul#comments
+      = render partial: 'comments/comment', collection: comments, as: :comment

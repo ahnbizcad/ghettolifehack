@@ -1,27 +1,20 @@
--if matches_current_user?(@user)
-  =link_to "Account Settings", edit_user_registration_path
-
 .row
+  .col-xs-12
+    -if matches_current_user?(@user)
+      =link_to "Account Settings", edit_user_registration_path
+
   #profile-large.col-xs-12.col-sm-4
-    .thumbnail
-      = image_tag @user.image
-    .caption
+    /-if @user.image
+    /  .thumbnail
+    /    = image_tag @user.image
+    h2
       = @user.username
     - if matches_current_user?(@user)
-      .caption
-        =link_to 'Edit Profile', edit_user_path(@user)
-
-.row
-  = render partial: 'layouts/profile_bar', locals: { user: @user, hacks: @hacks, comments: @comments }
-
-/put in bar
-
-/  ul#hacks.col-xs-12.col-sm-6
-/    = render partial: 'hacks/hack', collection: @hacks, as: :hack
-/  ul#comments.col-xs-12.col-sm-6
-/    = render partial: 'comments/comment', collection: @comments, as: :comment
-/| testing comment
-/= @user.comments.count
-//= user.hacks.favorites
+      
+      = link_to 'Edit Profile', edit_user_path(@user)
+  .col-xs-12-.col-sm-8
+    | testing comment
 
 
+  .col-xs-12
+    = render partial: 'users/profile_bar', locals: { user: @user, favorite_hacks: @favorite_hacks, hacks: @hacks, comments: @comments }

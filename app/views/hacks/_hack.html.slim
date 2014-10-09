@@ -6,8 +6,11 @@
 / show.html.slim - hacks
 / = render partial: "hacks/hack", :locals => { hack: @hack }
 
-li.hack.media
+/ show.html.slim - users
+/= render parital: 'hacks/hack', collection: favorite_hacks, as: :hack
+/= render parital: 'hacks/hack', collection: hacks, as: :hack
 
+li.media.well.well-sm.hack
   - if currently_admin? || ( matches_current_user?(hack.user) && !timed_out?(hack) )
     .close
       = link_to edit_hack_path(hack) do

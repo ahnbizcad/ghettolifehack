@@ -1,5 +1,20 @@
 .row
-  .col-xs-12.col-sm-6
+  .col-xs-12.col-sm-5.col-sm-push-7
+    h2
+      | Log In With
+    = render "devise/shared/socials"
+
+  |
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1469614829979932&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+  .col-xs-12.col-sm-7.col-sm-pull-5
     h2 Log In
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-inputs
@@ -12,21 +27,8 @@
         = f.button :submit, "Log In"
 
     = render "devise/shared/links"
-  
-  .col-xs-12.col-sm-6
-    h2
-      | Log In With
-    = render "devise/shared/socials"
 
-|
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1469614829979932&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
 
-.fb-login-button[ data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false" ]
+
+  /.fb-login-button[ data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false" ]
 
