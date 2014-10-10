@@ -1,19 +1,22 @@
 .row
-  .col-xs-12
-    -if matches_current_user?(@user)
-      =link_to "Account Settings", edit_user_registration_path
-
   #profile-large.col-xs-12.col-sm-4
-    /-if @user.image
-    /  .thumbnail
-    /    = image_tag @user.image
+    -if @user.image
+      .thumbnail
+        = image_tag @user.image
     h2
       = @user.username
+
     - if matches_current_user?(@user)
-      
       = link_to 'Edit Profile', edit_user_path(@user)
+      '
+      | |
+      ' 
+      =link_to "Account Settings", edit_user_registration_path
+
   .col-xs-12-.col-sm-8
-    | testing comment
+    | 
+      Stats
+      
 
 
   .col-xs-12

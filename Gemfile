@@ -34,10 +34,9 @@ end
 gem 'figaro', '~> 1.0.0'
 
 gem 'devise', '~> 3.4.0'
-
-gem 'twitter', '~> 5.11.0'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'twitter', '~> 5.11.0'
 
 gem 'simple_form', '~> 3.1.0.rc1'
 

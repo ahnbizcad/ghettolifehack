@@ -23,13 +23,13 @@ ul#profile-bar.nav.nav-tabs[ role="tablist" ]
 
 .tab-content
   #profile-favorites.tab-pane.fade.in
-    ul#favorites-hacks
+    #favorites-hacks
       = render partial: 'hacks/hack', collection: favorite_hacks, as: :hack
 
   #profile-hacks.tab-pane.fade
-    ul#hacks
+    #hacks
       = render partial: 'hacks/hack', collection: hacks, as: :hack
 
   #profile-comments.tab-pane.fade
-    ul#comments
+    #comments
       = render partial: 'comments/comment', collection: comments, as: :comment

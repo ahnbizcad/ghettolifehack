@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def hide_sidebar?
     (controller_name == 'registrations') ||
-    ( (controller_name == 'users') && action_name == 'show' ) ||
+    (controller_name == 'users') ||
     (controller_name == 'sessions')
   end
 
