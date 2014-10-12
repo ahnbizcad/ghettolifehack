@@ -1,6 +1,6 @@
 body {
   > .container-fluid {
-    background-image: linear-gradient(white, $gradient_darkblue, $darkblue);
+    background-image: linear-gradient(white, $gradient_darkblue 80%, $darkblue);
   }
   
 }
@@ -35,6 +35,38 @@ header {
     }
   }
 }
+
+#sidebar-one {
+
+  .sidebar-element {
+    background-color: #FFF;
+    border-color: $lightblue;
+
+    .sidebar-element-header {
+      text-align: center;
+      background-color: $lightblue;
+    }
+
+    .sidebar-element-body {
+
+    }
+  }
+
+  #sidebar-categories {
+
+  }
+  #sidebar-sidebar-ad {
+
+  }
+  #sidebar-recent-comments {
+
+  }
+  #sidebar-follow {
+
+  }
+}
+
+
 
 /* Login */
 #social-authentication-buttons {

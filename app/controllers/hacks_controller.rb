@@ -18,7 +18,7 @@ class HacksController < ApplicationController
   # GET /hacks
   # GET /hacks.json
   def index
-    @hacks = Hack.all.by_newest.page(params[:page]).per(20)
+    @hacks = Hack.all.by_newest.page(params[:page]).per(10)
   end
 
   # GET /hacks/1

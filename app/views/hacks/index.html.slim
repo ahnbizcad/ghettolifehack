@@ -1,15 +1,16 @@
 .row
   .col-xs-12.text-right
-    | Sort by:
-    / Implementation?
-    = link_to "Newest", remote: true
-    / Implementation?
-    = link_to "Highest Voted", remote: true
+  / | Sort by:
+  / = link_to "Newest", remote: true
+  / / Implementation?
+  / = link_to "Highest Voted", remote: true
 
 .row
   .col-xs-12
     ul.media-list.hacks
       = render partial: "hacks/hack", collection: @hacks, as: :hack
+
+      / insert an ad between hacks that's the same format as a hack.
 
 .row
   .col-xs-12.text-center

@@ -3,9 +3,9 @@
   #social-authentication-buttons
     - resource_class.omniauth_providers.each do |provider|
       / resource_name = "user", and appends the method name.
-      = link_to omniauth_authorize_path(resource_name, provider), id: "#{provider}", title: "#{provider.capitalize}" do
+      = link_to omniauth_authorize_path(resource_name, provider), id: "#{provider}" do
         - if !user_signed_in?
-          = image_tag "#{provider.to_s}.png"
+          = image_tag "#{provider.to_s}.png", alt: "#{provider}"
           <br>
         - else
           - if current_user.authentications.find_by_provider(provider)

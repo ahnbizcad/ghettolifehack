@@ -33,12 +33,12 @@ end
 
 gem 'figaro', '~> 1.0.0'
 
+gem 'simple_form', '~> 3.1.0.rc1'
+
 gem 'devise', '~> 3.4.0'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'twitter', '~> 5.11.0'
-
-gem 'simple_form', '~> 3.1.0.rc1'
 
 gem 'acts_as_commentable_with_threading'
 gem 'awesome_nested_set', '>= 3.0.0.rc.5'

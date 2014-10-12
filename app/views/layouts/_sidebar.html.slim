@@ -1,5 +1,42 @@
-aside#sidebar.well.well-sm
+aside#sidebar-one
   .row
-    .col-sm-3
-      
-      | asdf
+    .col-xs-12
+      #sidebar-categories.sidebar-element
+        .sidebar-element-header
+          | Categories
+        .sidebar-element-body.well.well-sm
+          | aewtet
+          /= categories.all
+
+  .row
+    .col-xs-12
+      #sidebar-ad.sidebar-element
+        .sidebar-element-header
+          | Sidebar ad
+        .sidebar-element-body.well.well-sm
+          | ad image
+
+  .row
+    .col-xs-12
+      #sidebar-recent-comments.sidebar-element
+        .sidebar-element-header
+          | Recent comments
+        .sidebar-element-body.well.well-sm
+          |
+            Recent comments
+            Recent comments
+            Recent comments
+
+  .row
+    .col-xs-12
+      #sidebar-follow.sidebar-element
+        .sidebar-element-header
+          | Follow
+        .sidebar-element-body.well.well-sm
+          #social-follow-buttons
+            #twitter-follow-button
+              = link_to "https://twitter.com/GhettoLifeHack_", class: "twitter-follow-button", data: { "show-count" => "false", dnt: "true" } do
+                | Follow @GhettoLifeHack_
+
+            #facebook-follow-button
+              .fb-follow[ data-href="https://www.facebook.com/ghettolifehack" data-colorscheme="light" data-layout="standard" data-width="150" data-show-faces="true"]
