@@ -6,7 +6,7 @@
 / show.html.slim - users
 / = render partial: 'comment', :locals => { comment: comment }
 
-.comment[ id="comment-#{comment.id}" ]
+li.comment[ id="comment-#{comment.id}" ]
   hr
 
   - if currently_admin? || matches_current_user?(comment.user)

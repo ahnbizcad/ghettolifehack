@@ -1,10 +1,9 @@
 .row
   .col-xs-12
 
-    p#notice = notice
-
     = render partial: "hacks/hack", :locals => { hack: @hack }
 
     = render partial: "comments/form", locals: { comment: @comment, hack: @hack } if user_signed_in? 
     /remove logged in requirement, and have submitting redirect to log in, and preserve text, and push comment.
-    = render partial: "comments/comment", collection: @comments, as: :comment
+    ul#comments-list.list-unstyled
+      = render partial: "comments/comment", collection: @comments, as: :comment

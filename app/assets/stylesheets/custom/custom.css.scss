@@ -1,6 +1,12 @@
+textarea {
+  
+  rows: 5;
+  overflow: hidden;
+}
+
 body {
   > .container-fluid {
-    background-image: linear-gradient(white, $gradient_darkblue 80%, $darkblue);
+    background-image: linear-gradient(#EEE, $gradient_darkblue 80%, $darkblue);
   }
   
 }
@@ -38,8 +44,7 @@ header {
 
 #sidebar-one {
 
-  .sidebar-element {
-    background-color: #FFF;
+  .sidebar-element {    
     border-color: $lightblue;
 
     .sidebar-element-header {
@@ -48,7 +53,7 @@ header {
     }
 
     .sidebar-element-body {
-
+      background-color: #FFF;
     }
   }
 
@@ -92,19 +97,21 @@ header {
   }
 }
 
+#social-share-buttons {
+  .social-share-button {
+
+  }  
+}
 
 .comments {
   
 
 }
 
-.comment {
-
-}
-
-#profile-bar {
+ul#profile-bar {
   background-color: #5599CC;
 
+  whites-pace: no-wrap;
   li.active a {
     color: #428BCA;
   }

@@ -21,8 +21,27 @@ li.media.well.well-sm.hack
 
   .hack-body
     = hack.body
-    
+
   .hack-header
+
+
+    /| on
+    /'
+    /= hack.created_at.to_datetime
+    /'
+
+  .hack-footer
+    = link_to favorite_hack_path(hack), method: :post, remote: true, title: "Add to Favorites", data: { favorite: true } do
+      = image_tag "star-off.png"
+      '
+
+    = link_to hack, title: "Comments" do
+      span[class="glyphicon glyphicon-comment"]
+      | (
+      = hack.comment_threads_count
+      ' )
+      ' 
+
     = link_to hack do
       | GLH 
       | #
@@ -33,24 +52,10 @@ li.media.well.well-sm.hack
     = link_to hack.user.username, hack.user
     '
 
-    /| on
-    /'
-    /= hack.created_at.to_datetime
-    /'
+    #social-share-buttons.pull-right
 
-  .hack-footer
-    = link_to "https://twitter.com/share", class: "twitter-share-button", data: { count: "none", url: hack_url(hack), text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
+      .fb-share-button[ data-href="#{hacks_url(hack)}" data-layout="button" ]
       '
 
-    .fb-share-button[ data-href="#{hacks_url(hack)}" data-layout="button" ]
-    '
-
-    = link_to hack, title: "Comments" do
-      span[class="glyphicon glyphicon-comment"]
-      | (
-      = hack.comment_threads_count
-      ' )
-  
-    = link_to favorite_hack_path(hack), method: :post, remote: true, title: "Add to Favorites", data: { favorite: true } do
-      = image_tag "star-off.png"
-      '
+      = link_to "https://twitter.com/share", class: "twitter-share-button", data: { count: "none", url: hack_url(hack), text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
+      ' 

@@ -1,22 +1,25 @@
 .row
-  #profile-large.col-xs-12.col-sm-4
-    -if @user.image
-      .thumbnail
-        = image_tag @user.image
-    h2
-      = @user.username
+  .col-xs-12.col-sm-4
 
-    - if matches_current_user?(@user)
-      = link_to 'Edit Profile', edit_user_path(@user)
-      '
-      | |
+    h3 = @user.username
       ' 
-      =link_to "Account Settings", edit_user_registration_path
+      - if matches_current_user?(@user)
+        small
+          = link_to 'Edit Profile', edit_user_path(@user)
+          '
+          | |
+          ' 
+          =link_to "Account Settings", edit_user_registration_path
+
+    #profile-large
+      - if @user.image
+        .thumbnail
+          = image_tag @user.image
 
   .col-xs-12-.col-sm-8
     | 
       Stats
-      
+
 
 
   .col-xs-12

@@ -15,9 +15,10 @@ html
       == render 'layouts/header'
       == render 'layouts/navbar'
 
-      .row
-        .col-xs-12
-          == render 'layouts/ad'
+      - unless hide_elements?
+        .row
+          .col-xs-12
+            == render 'layouts/ad'
 
       .row
         .col-xs-12
@@ -33,7 +34,7 @@ html
                 div[ id="flash-#{type}" ]
                   = msg
 
-      - if hide_sidebar?
+      - if hide_elements?
         main
           = yield
       - else
