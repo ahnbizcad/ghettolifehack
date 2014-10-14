@@ -15,11 +15,6 @@ html
       == render 'layouts/header'
       == render 'layouts/navbar'
 
-      - unless hide_elements?
-        .row
-          .col-xs-12
-            == render 'layouts/ad'
-
       .row
         .col-xs-12
           - flash.each do |type, msg|
@@ -34,6 +29,11 @@ html
                 div[ id="flash-#{type}" ]
                   = msg
 
+      - unless hide_elements?
+        .row
+          .col-xs-12
+            == render 'layouts/ad'
+            
       - if hide_elements?
         main
           = yield

@@ -20,6 +20,19 @@ class ApplicationController < ActionController::Base
     end    
     helper_method :timed_out?
 
+  def favorited_by_current_user?(hack)
+    if user_signed_in?
+      if Favorite.find_by_hack_id_and_user_id(hack.id, current_user.id)
+        true
+      else
+        false
+      end
+    else
+      false
+    end
+  end
+  helper_method :favorited_by_current_user?
+
   private
   
     def title

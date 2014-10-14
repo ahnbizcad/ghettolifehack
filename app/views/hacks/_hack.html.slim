@@ -10,7 +10,7 @@
 /= render parital: 'hacks/hack', collection: favorite_hacks, as: :hack
 /= render parital: 'hacks/hack', collection: hacks, as: :hack
 
-li.media.well.well-sm.hack
+li.hack.media.well.well-sm[ id="hack-#{hack.id}" ]
   - if currently_admin? || ( matches_current_user?(hack.user) && !timed_out?(hack) )
     .close
       = link_to edit_hack_path(hack) do
@@ -22,34 +22,32 @@ li.media.well.well-sm.hack
   .hack-body
     = hack.body
 
-  .hack-header
-
-
-    /| on
-    /'
-    /= hack.created_at.to_datetime
-    /'
+  hr.horizontal-divider
 
   .hack-footer
-    = link_to favorite_hack_path(hack), method: :post, remote: true, title: "Add to Favorites", data: { favorite: true } do
-      = image_tag "star-off.png"
-      '
-
-    = link_to hack, title: "Comments" do
-      span[class="glyphicon glyphicon-comment"]
-      | (
-      = hack.comment_threads_count
-      ' )
-      ' 
-
-    = link_to hack do
-      | GLH 
-      | #
-      = hack.id
-      ' 
+    .favorite-link   
+      = link_to favorite_hack_path(hack), method: :post, remote: true, title: "Favorite", class: (favorited_by_current_user?(hack) ? "favorited" : "") do
+        .star-image
+    '
+    .comment-link
+      = link_to hack, title: "Comments" do
+        span[class="glyphicon glyphicon-comment"]
+        '
+        | (
+        = hack.comment_threads_count
+        ' )
+    ' 
+    .hack-link
+      = link_to hack do
+        | GLH
+        ' 
+        | #
+        = hack.id
+    ' 
     ' by
 
-    = link_to hack.user.username, hack.user
+    .user-link
+      = link_to hack.user.username, hack.user
     '
 
     #social-share-buttons.pull-right

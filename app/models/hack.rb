@@ -36,4 +36,5 @@ class Hack < ActiveRecord::Base
     self.user.image
   end
 
+
 end

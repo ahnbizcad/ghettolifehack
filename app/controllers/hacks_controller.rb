@@ -3,16 +3,22 @@ class HacksController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
 
+  respond_to :html, :js
+
   def favorite
+    @hack_id = params[:id]
     @favorite = Favorite.find_or_initialize_by(user_id: current_user.id, hack_id: params[:id])
     if @favorite.persisted?
       @favorite.destroy
-      render js: {  }
+      respond_to do |format|
+        format.js {  }
+      end
     else
       @favorite.save
-      render js: {  }
+      respond_to do |format|
+        format.js {  }
+      end
     end
-
   end
 
   # GET /hacks

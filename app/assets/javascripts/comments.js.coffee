@@ -12,11 +12,11 @@ $(document).ready ->
         .val("");
       $(xhr.responseText).insertAfter($(this)).show('slow');
 
-    # Destroy a comment.
-    $(document)
-      .on "ajax:beforeSend", ".comment", ->
-        $(this).fadeTo('fast', 0.5)
-      .on "ajax:success", ".comment", ->
-        $(this).hide('fast')
-      .on "ajax:error", ".comment", ->
-        $(this).fadeTo('fast', 1)
+  # Destroy a comment.
+  $(document)
+    .on "ajax:beforeSend", ".comment", ->
+      $(this).fadeTo('fast', 0.5)
+    .on "ajax:success", ".comment", ->
+      $(this).hide('fast')
+    .on "ajax:error", ".comment", ->
+      $(this).fadeTo('fast', 1)

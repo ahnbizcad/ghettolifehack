@@ -1,7 +1,11 @@
 textarea {
-  
-  rows: 5;
-  overflow: hidden;
+  min-width: 100%;
+  max-width: 100%;
+  rows: 10;
+}
+
+hr.horizontal-divider {
+  margin: 5px 0px;
 }
 
 body {
@@ -86,14 +90,44 @@ header {
   list-style: none;
   background-color: $lightblue;
 
-  .hack-heading {
-    background-color: #254673;
+  .close {
+
   }
+  .hack-voting {
+    
+  }  
   .hack-body {
 
   }
-  .hack-footer {
+  .hack-footer > * {
+    display: inline-block;
+  }
+}
 
+.favorite-link {
+  a {
+    .star-image {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+   
+      background-image: url("star-off.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.favorite-link {
+  a.favorited {
+    .star-image {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background-image: url("star-on.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 }
 

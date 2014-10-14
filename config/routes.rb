@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy] #Polymorphic 
 
   resources :hacks, concerns: :paginatable do
-    member do
-      post "favorite"
-    end
+    post "favorite", on: :member    
   end
 
   resources :users
