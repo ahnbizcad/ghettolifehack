@@ -111,7 +111,7 @@ header {
       width: 14px;
       height: 14px;
    
-      background-image: url("star-off.png");
+      background-image: image-url("star-off.png");
       background-size: contain;
       background-repeat: no-repeat;
     }
@@ -124,7 +124,7 @@ header {
       display: inline-block;
       width: 14px;
       height: 14px;
-      background-image: url("star-on.png");
+      background-image: image-url("star-on.png");
       background-size: contain;
       background-repeat: no-repeat;
     }

@@ -27,5 +27,5 @@ production:
   <<: *default
   database: glh_production
   host: ghettolifehack.com
-  username: postgres
+  username: ENV['DATABASE_USERNAME_PRODUCTION']
   password: ENV['DATABASE_PASSWORD_PRODUCTION']
