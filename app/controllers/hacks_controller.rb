@@ -25,6 +25,9 @@ class HacksController < ApplicationController
   # GET /hacks.json
   def index
     @hacks = Hack.all.by_newest.page(params[:page]).per(10)
+    #@users = @hacks.join users where user_id current_user.id
+    #@favorites = @hacks.joins favorites where user_id = current_user.id
+    #Then bind these to @hacks, and make the partial referencing them call the cached users and favorites
   end
 
   # GET /hacks/1
