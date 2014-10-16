@@ -14,6 +14,11 @@ html
     .container-fluid
       == render 'layouts/header'
       == render 'layouts/navbar'
+      
+      /.row
+      /  .col-xs-12
+      /    = content_tag :div, id: "new-hack" do
+      /      == render partial: 'hacks/form', locals: { hack: @hack }
 
       .row
         .col-xs-12
@@ -28,7 +33,7 @@ html
                     | Close
                 div[ id="flash-#{type}" ]
                   = msg
-      
+
       - unless hide_elements?
         .row
           .col-xs-12
