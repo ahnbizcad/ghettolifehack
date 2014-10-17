@@ -20,7 +20,7 @@
 #  image                  :string(255)
 #  points                 :integer          default(0), not null
 #  hacks_count            :integer          default(0), not null
-#  comment_threads_count  :integer          default(0), not null
+#  comments_count         :integer          default(0), not null
 #  favorites_count        :integer          default(0), not null
 #
 # Indexes

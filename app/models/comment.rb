@@ -32,7 +32,7 @@ class Comment < ActiveRecord::Base
   #acts_as_votable
 
   belongs_to :commentable, :polymorphic => true, counter_cache: :comment_threads_count
-  belongs_to :user
+  belongs_to :user, counter_cache: :comments_count
 
   # Helper class method to lookup all comments assigned
   # to all commentable types for a given user.

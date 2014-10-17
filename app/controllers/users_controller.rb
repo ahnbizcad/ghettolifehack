@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -10,9 +10,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.includes(:favorite_hacks, :hacks, :comments).find(params[:id])
     @favorite_hacks = @user.favorite_hacks
-    @hacks = @user.hacks.all
-    @comments = @user.comments.all
+    @hacks = @user.hacks
+    @comments = @user.comments
   end
 
   # GET /users/new

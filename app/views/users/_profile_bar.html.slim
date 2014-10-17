@@ -4,18 +4,18 @@
 ul#profile-bar.nav.nav-tabs[ role="tablist" ]
   li.active
     = link_to "#profile-favorites", role: "tab", data: { toggle: "tab" } do
-      | Favorites(
+      | Favorites (
       = user.favorites_count
       | )
   li
     = link_to "#profile-hacks", role: "tab", data: { toggle: "tab" } do
-      | Submitted(
+      | Submitted (
       = user.hacks_count
       | )
   li
     = link_to "#profile-comments", role: "tab", data: { toggle: "tab" } do
-      | Comments(
-      = user.comment_threads_count
+      | Comments (
+      = user.comments_count
       | )
 
 .tab-content
