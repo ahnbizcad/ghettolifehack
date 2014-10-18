@@ -55,5 +55,5 @@ li.hack.media.well.well-sm[ id="hack-#{hack.id}" ]
       .fb-share-button[ data-href="#{hacks_url(hack)}" data-layout="button" ]
       '
 
-      = link_to "https://twitter.com/share", class: "twitter-share-button", data: { count: "none", url: hack_url(hack), text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
+      = link_to "https://twitter.com/share", class: "twitter-share-button", data: { url: hack_url(hack), count: "none", text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
       ' 

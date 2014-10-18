@@ -6,7 +6,7 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
     provider = omniauth['provider'].capitalize
     if user_signed_in? && authentication
       if current_user.encrypted_password.blank? && current_user.authentications.size <= 1
-        flash[:alert] = "Please set a password before dissociating your social media account so that you can log back in."
+        flash[:alert] = "You must set a password before dissociating your social media account so that you can log back in."
         redirect_to edit_user_registration_path
       else
         authentication.destroy

@@ -1,17 +1,20 @@
 .row
   .col-xs-12
-    h1 Listing Members
+    h1 Members List
 
-    / most active day week month year
-    / most points
-    / most posts
-    / most moderator points
+    = @users.count
+    | members
 
-      - @users.each do |user|
-        = link_to 'Show', user
-        = link_to 'Edit', edit_user_path(user)
-        = link_to 'Destroy', user, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-    br
-
-    = link_to 'New User', new_user_path
+    table.table.table-condensed.table-hover.table-responsive
+      thead
+        tr
+          th User
+          th Submitted
+          th Reputation          
+      tbody
+        - @users.each do |user|
+          tr
+            td = link_to user do
+              = user.username
+            td = user.hacks_count
+            td = user.points

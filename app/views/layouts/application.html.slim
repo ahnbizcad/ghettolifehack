@@ -7,6 +7,11 @@ html
     = csrf_meta_tags
     meta name="viewport" content="initial-scale=1.0"    
   body
+    / Twitter script when changing pages with turbolinks enabled.
+    / http://reed.github.io/turbolinks-compatibility/twitter.html
+    / faster if javascript cached.
+    <script src="//platform.twitter.com/widgets.js"></script>
+
     - if Rails.env.development?
       = session["devise.omni"]
       = debug(params)

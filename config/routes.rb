@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     post "favorite", on: :member    
   end
 
-  resources :users
+  resources :users, except: [:new, :create, :delete]
 
   devise_for :users, :path => '', 
                      :path_names => { :sign_in => "login", 
