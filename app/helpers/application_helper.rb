@@ -28,5 +28,4 @@ module ApplicationHelper
     (controller_name == 'sessions')
   end
 
-
 end

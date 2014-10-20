@@ -26,7 +26,7 @@ li.hack.media.well.well-sm[ id="hack-#{hack.id}" ]
 
   .hack-footer
     .favorite-link   
-      = link_to favorite_hack_path(hack), method: :post, remote: true, title: "Favorite", class: (favorited_by_current_user?(hack) ? "favorited" : "") do
+      = link_to favorite_hack_path(hack), method: :post, remote: true, title: user_signed_in? ? "Favorite" : "Log in to add favorites", class: (favorited_by_current_user?(hack) ? "favorited" : "") do
         .star-image
     '
     .comment-link

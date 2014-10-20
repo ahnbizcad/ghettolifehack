@@ -18,7 +18,12 @@ xs is default. Smaller sizes cascade to larger sizes. Flow structure.
 ----------------------------------------*/
 
 main {
-  min-height: 900px;
+  min-height: 1000px;
+}
+
+.hide-responsive {
+  
+  display: none;
 }
 
 /*----------------------------------------
@@ -26,7 +31,10 @@ sm devices (tablets, 748px and up)
 ----------------------------------------*/
 @media only screen and (min-width: $screen-sm){ 
 
-
+  .hide-responsive {
+    
+    display: initial;
+  }
 
 }
 
