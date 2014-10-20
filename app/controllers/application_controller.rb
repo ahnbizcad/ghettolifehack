@@ -15,23 +15,23 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :username, :current_password) }
     end
 
-    def timed_out?(object, time=5*60*1000)
-      (Time.now - object.created_at > time) ? true : false
+    def timed_out?(object, time=5*60)
+      (Time.now.utc - object.created_at) > time ? true : false
     end    
     helper_method :timed_out?
 
-  def favorited_by_current_user?(hack)
-    if user_signed_in?
-      if Favorite.find_by_hack_id_and_user_id(hack.id, current_user.id)
-        true
+    def favorited_by_current_user?(hack)
+      if user_signed_in?
+        if Favorite.find_by_hack_id_and_user_id(hack.id, current_user.id)
+          true
+        else
+          false
+        end
       else
         false
       end
-    else
-      false
     end
-  end
-  helper_method :favorited_by_current_user?
+    helper_method :favorited_by_current_user?
 
   private
   

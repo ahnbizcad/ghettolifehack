@@ -16,11 +16,5 @@
         .thumbnail
           = image_tag @user.image
 
-  .col-xs-12-.col-sm-8
-    | 
-      Stats
-
-
-
   .col-xs-12
     = render partial: 'users/profile_bar', locals: { user: @user, favorite_hacks: @favorite_hacks, hacks: @hacks, comments: @comments }

@@ -23,9 +23,11 @@ Mixins - Positioning
 Mixins - Colors, Styling
 ----------*/
 
-$lightblue: #C9DEF7;
-$darkblue: #355693;
+$lightgreen: #C9F7DE;
+$darkgreen: #359356;
 
-$gradient_lightblue: lighten($lightblue, 20%);
-$gradient_darkblue: lighten($darkblue, 50%);
+$navbar-text: #DDD;
+
+$gradient_lightblue: lighten($lightgreen, 20%);
+$gradient_darkblue: lighten($darkgreen, 50%);
 

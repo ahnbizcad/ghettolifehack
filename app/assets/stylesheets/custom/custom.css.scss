@@ -10,13 +10,13 @@ hr.horizontal-divider {
 
 body {
   > .container-fluid {
-    background-image: linear-gradient(#EEE, $gradient_darkblue 80%, $darkblue);
+    background-image: linear-gradient(#EEE, $gradient_darkblue 80%, $darkgreen);
   }
   
 }
 
 footer {
-  background-color: $darkblue;
+  background-color: $darkgreen;
 }
 
 header {
@@ -26,7 +26,7 @@ header {
 
 #navbar {
   width: 100%;
-  background-color: $darkblue;
+  background-color: $darkgreen;
   
   >ul { 
     white-space: nowrap;
@@ -36,6 +36,7 @@ header {
       display: inline-block;
       *display: inline;
       *zoom: 1;
+
 
         >ul {
           >li {
@@ -47,14 +48,28 @@ header {
   }
 }
 
+
+  .navbar-nav {
+    > li {
+      > a {
+        color: $navbar-text;
+
+        &:hover {
+          color: $darkgreen;
+        }
+      }
+    }
+  }
+
+
 #sidebar-one {
 
   .sidebar-element {    
-    border-color: $lightblue;
+    border-color: $lightgreen;
 
     .sidebar-element-header {
       text-align: center;
-      background-color: $lightblue;
+      background-color: $darkgreen;
     }
 
     .sidebar-element-body {
@@ -89,7 +104,7 @@ header {
 
 .hack {
   list-style: none;
-  background-color: $lightblue;
+  background-color: $lightgreen;
 
   .close {
 

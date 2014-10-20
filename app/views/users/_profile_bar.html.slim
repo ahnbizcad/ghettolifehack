@@ -3,14 +3,14 @@
 
 ul#profile-bar.nav.nav-tabs[ role="tablist" ]
   li.active
-    = link_to "#profile-favorites", role: "tab", data: { toggle: "tab" } do
-      | Favorites (
-      = user.favorites_count
-      | )
-  li
     = link_to "#profile-hacks", role: "tab", data: { toggle: "tab" } do
       | Submitted (
       = user.hacks_count
+      | )
+  li
+    = link_to "#profile-favorites", role: "tab", data: { toggle: "tab" } do
+      | Favorites (
+      = user.favorites_count
       | )
   li
     = link_to "#profile-comments", role: "tab", data: { toggle: "tab" } do
@@ -19,13 +19,14 @@ ul#profile-bar.nav.nav-tabs[ role="tablist" ]
       | )
 
 .tab-content
-  #profile-favorites.tab-pane.fade.in.active
-    #favorited-hacks.hacks
-      = render partial: 'hacks/hack', collection: favorite_hacks, as: :hack
-
-  #profile-hacks.tab-pane.fade
+  
+  #profile-hacks.tab-pane.fade.in.active
     #submitted-hacks.hacks
       = render partial: 'hacks/hack', collection: hacks, as: :hack
+
+  #profile-favorites.tab-pane.fade
+    #favorited-hacks.hacks
+      = render partial: 'hacks/hack', collection: favorite_hacks, as: :hack
 
   #profile-comments.tab-pane.fade
     #comments

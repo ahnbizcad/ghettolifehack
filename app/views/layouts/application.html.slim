@@ -39,20 +39,20 @@ html
                 div[ id="flash-#{type}" ]
                   = msg
 
-      - unless hide_elements?
-        .row
-          .col-xs-12
-            == render 'layouts/ad'
+      /- unless hide_elements?
+      /  .row
+      /    .col-xs-12
+      /      == render 'layouts/ad'
             
       - if hide_elements?
         main
           = yield
       - else
         .row
-          .col-xs-12.col-sm-9
+          .col-xs-12.col-sm-8
             main
               = yield
-          .col-xs-12.col-sm-3
+          .col-xs-12.col-sm-4
             == render 'layouts/sidebar'
 
       == render 'layouts/footer'
