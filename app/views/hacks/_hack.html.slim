@@ -36,24 +36,22 @@ li.hack.media.well.well-sm[ id="hack-#{hack.id}" ]
         | (
         = hack.comment_threads_count
         ' )
-    ' 
-    .hack-link
+    '
+
+    #social-share-buttons
+      = link_to "https://twitter.com/share", class: "twitter-share-button", data: { url: hack_url(hack), count: "none", text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
+      ' 
+
+      .fb-share-button[ data-href="#{hacks_url(hack)}" data-layout="button" ]
+      '
+
+    .hack-link.pull-right
       = link_to hack do
         | GLH
         ' 
         | #
         = hack.id
-    ' 
-    ' by
-
-    .user-link
-      = link_to hack.user.username, hack.user
-    '
-
-    #social-share-buttons.pull-right
-
-      .fb-share-button[ data-href="#{hacks_url(hack)}" data-layout="button" ]
-      '
-
-      = link_to "https://twitter.com/share", class: "twitter-share-button", data: { url: hack_url(hack), count: "none", text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
       ' 
+      ' by
+      = link_to hack.user.username, hack.user
+      '

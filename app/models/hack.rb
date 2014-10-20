@@ -21,6 +21,7 @@ class Hack < ActiveRecord::Base
   has_many :favorites
 
   acts_as_commentable
+  acts_as_taggable_on :tags
   acts_as_votable  
 
 

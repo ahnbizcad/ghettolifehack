@@ -16,8 +16,10 @@ html
       = session["devise.omni"]
       = debug(params)
 
-    .container-fluid
-      == render 'layouts/header'
+
+    /.container-fluid
+    /  == render 'layouts/header'
+    .container-fluid#gradiented
       == render 'layouts/navbar'
       
       /.row
@@ -55,7 +57,9 @@ html
           .col-xs-12.col-sm-4
             == render 'layouts/sidebar'
 
-      == render 'layouts/footer'
+    footer
+      .container-fluid
+        == render 'layouts/footer'
 
   /FEATURES
   /fb share

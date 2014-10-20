@@ -3,11 +3,11 @@
     .col-xs-12
       .navbar-header
         = link_to root_path, class: "navbar-brand" do
-          = image_tag "ghettolifehack.png"
+          = image_tag "logo_navbar.png"
 
       ul#navbar-main.nav.navbar-nav
         li= link_to "Submit hack", new_hack_path
-        li= link_to "Members", users_path
+        /li= link_to "Members", users_path
 
       ul#login.nav.navbar-nav.navbar-right
         -if user_signed_in?

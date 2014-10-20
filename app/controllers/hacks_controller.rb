@@ -128,6 +128,6 @@ class HacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hack_params
-      params.require(:hack).permit(:body)
+      params.require(:hack).permit(:body, :tag_list)
     end
 end

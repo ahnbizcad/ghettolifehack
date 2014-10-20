@@ -1,7 +1,8 @@
 /show.html.slim - users
 /= render partial: 'users/profile_bar', locals: { user: @user, favorite_hacks: @favorite_hacks, hacks: @hacks, comments: @comments }
 
-ul#profile-bar.nav.nav-tabs[ role="tablist" ]
+
+ul.nav.nav-tabs[ role="tablist" ]
   li.active
     = link_to "#profile-hacks", role: "tab", data: { toggle: "tab" } do
       | Submitted (
@@ -17,6 +18,7 @@ ul#profile-bar.nav.nav-tabs[ role="tablist" ]
       | Comments (
       = user.comments_count
       | )
+
 
 .tab-content
   

@@ -1,28 +1,28 @@
-== README
+Ghetto Life Hack 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Made with:
 
-Things you may want to cover:
+Devise
+Omniauth-twitter
+omniauth-facebook
 
-* Ruby version
+slim
+sass
+coffeescript
 
-* System dependencies
+bootstrap
+jquery
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+kaminari for pagination
+acts_as_commentable_with_threading
+acts_as_taggable_on
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Upcoming:
+
+voting
+tagging categories
+devise authenticate_user! compatible with ajax
+shares count per user
+twitter image on hacks and comments
+facebook share an individual hack

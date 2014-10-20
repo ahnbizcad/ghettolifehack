@@ -1,20 +1,43 @@
 .row
   .col-xs-12.col-sm-4
 
-    h3 = @user.username
-      ' 
-      - if matches_current_user?(@user)
-        small
-          = link_to 'Edit Profile', edit_user_path(@user)
-          '
-          | |
-          ' 
-          =link_to "Account Settings", edit_user_registration_path
+    h1 = @user.username
+    ' 
+    - if matches_current_user?(@user)
+      small
+        = link_to 'Edit Profile', edit_user_path(@user)
+        '
+        | |
+        ' 
+        =link_to "Account Settings", edit_user_registration_path
 
-    #profile-large
-      - if @user.image
-        .thumbnail
-          = image_tag @user.image
+    <br>
 
+    = image_tag avatar_url(@user, 225), alt: @user.username, class: "gravatar"
+  
+    /#profile-large
+    /  - if @user.image
+    /    .thumbnail
+    /      = image_tag @user.image
+
+  .col.xs-12.col-sm-8
+    #stats
+      ul.no-bullet
+        li Upvotes Received:
+        li Submitted GLH:
+        li Comments:
+        /li Shares:
+        
+
+      ul.no-bullet
+        li 0 
+        /= @user.hacks.votes_total
+        li = @user.hacks_count
+        li = @user.comments_count
+        /li = @user.shares_count
+        
+
+.row
   .col-xs-12
-    = render partial: 'users/profile_bar', locals: { user: @user, favorite_hacks: @favorite_hacks, hacks: @hacks, comments: @comments }
+    #profile-bar
+      = render partial: 'users/profile_bar', locals: { user: @user, favorite_hacks: @favorite_hacks, hacks: @hacks, comments: @comments }

@@ -1,3 +1,13 @@
+/*--------------------------
+
+--------------------------*/
+
+ul.no-bullet {
+  list-style: none;
+  padding-left: 0em;
+  vertical-align: text-top;
+}
+
 textarea {
   min-width: 100%;
   max-width: 100%;
@@ -8,20 +18,23 @@ hr.horizontal-divider {
   margin: 5px 0px;
 }
 
+/*--------------------------
+
+--------------------------*/
+
 body {
-  > .container-fluid {
-    background-image: linear-gradient(#EEE, $gradient_darkblue 80%, $darkgreen);
-  }
-  
+  > #gradiented.container-fluid {
+    background-image: linear-gradient(#DDD, $lightgreen 90%, $darkgreen);
+  }  
 }
 
 footer {
   background-color: $darkgreen;
+  padding: 1em 0;
 }
 
 header {
-
-
+  background-image: image-url("header.png");
 }
 
 #navbar {
@@ -49,17 +62,17 @@ header {
 }
 
 
-  .navbar-nav {
-    > li {
-      > a {
-        color: $navbar-text;
+.navbar-nav {
+  > li {
+    > a {
+      color: $navbar-text;
 
-        &:hover {
-          color: $darkgreen;
-        }
+      &:hover {
+        color: $darkgreen;
       }
     }
   }
+}
 
 
 #sidebar-one {
@@ -70,6 +83,8 @@ header {
     .sidebar-element-header {
       text-align: center;
       background-color: $darkgreen;
+
+      padding: 0.25em 0em;
     }
 
     .sidebar-element-body {
@@ -98,13 +113,28 @@ header {
   margin: 0 0 15px;
 }
 
+#social-follow-buttons {
+  .social-share-button {
+
+  }  
+}
+
+
+#social-share-buttons {
+  .social-share-button {
+
+  }  
+}
+
+
+
 .hacks {
 
 }
 
 .hack {
   list-style: none;
-  background-color: $lightgreen;
+  border-color: $darkgreen;
 
   .close {
 
@@ -147,31 +177,36 @@ header {
   }
 }
 
-#social-share-buttons {
-  .social-share-button {
-
-  }  
-}
 
 .comments {
   
 
 }
 
-ul#profile-bar {
-  background-color: #5599CC;
+#stats {
+  ul {
+    display: inline-block;
 
-  whites-pace: no-wrap;
-  li.active a {
-    color: #428BCA;
-  }
-
-  a { 
-    color: #FFF;
-  }
-
-  a:hover {
-    color: #2A6496;
   }
 }
 
+#profile-bar {
+  ul{
+    margin: 1em 0;
+
+    background-color: $darkgreen;
+
+    whites-pace: no-wrap;
+    li.active a {
+      color: $darkgreen;
+    }
+
+    a { 
+      color: #FFF;
+    }
+
+    a:hover {
+      color: $darkgreen;
+    }
+  }
+}
