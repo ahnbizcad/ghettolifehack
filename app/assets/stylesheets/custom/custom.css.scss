@@ -16,6 +16,7 @@ textarea {
 
 hr.horizontal-divider {
   margin: 5px 0px;
+  border-color: $lightgreen;
 }
 
 /*--------------------------
@@ -24,13 +25,34 @@ hr.horizontal-divider {
 
 body {
   > #gradiented.container-fluid {
-    background-image: linear-gradient(#DDD, $lightgreen 90%, $darkgreen);
+    background: linear-gradient($offwhite, $lightgreen);
   }  
 }
 
 footer {
-  background-color: $darkgreen;
-  padding: 1em 0;
+  #footer-fade {
+    height: 100px;
+    background: linear-gradient($lightgreen, $darkdarkgreen);
+  }
+
+  background-color: $darkdarkgreen;
+  color: $offwhite;
+  font-weight: $header-font-weight;
+
+  padding: 0 0 2em;
+
+  a {
+    color: $offwhite;
+
+    &:hover {
+      color: #FFF;
+      text-decoration: none;
+      font-weight: bold;
+      
+
+    }
+  }
+
 }
 
 header {
@@ -39,10 +61,18 @@ header {
 
 #navbar {
   width: 100%;
+
+  @include standard-gradient;
   background-color: $darkgreen;
+  font-weight: $header-font-weight;
   
+  border-top: 1px 0px solid $darkgreen;
+  border-bottom: 1px 0px solid $darkgreen;
+
+  white-space: nowrap;
   >ul { 
-    white-space: nowrap;
+    display: inline-block;
+    
 
     >li {
       float: none;
@@ -65,10 +95,13 @@ header {
 .navbar-nav {
   > li {
     > a {
-      color: $navbar-text;
+      color: $offwhite;
+
 
       &:hover {
         color: $darkgreen;
+        font-weight: $header-font-weight;
+
       }
     }
   }
@@ -78,13 +111,15 @@ header {
 #sidebar-one {
 
   .sidebar-element {    
-    border-color: $lightgreen;
+    border-color: $darkgreen;
 
     .sidebar-element-header {
       text-align: center;
-      background-color: $darkgreen;
-
-      padding: 0.25em 0em;
+      padding: 0.50em 0em;
+      
+      @include standard-gradient;
+      color: $offwhite;
+      font-weight: $header-font-weight;
     }
 
     .sidebar-element-body {
@@ -142,6 +177,9 @@ header {
   .hack-voting {
     
   }  
+  .hack-header {
+
+  }
   .hack-body {
 
   }

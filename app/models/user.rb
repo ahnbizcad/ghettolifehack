@@ -58,7 +58,9 @@ class User < ActiveRecord::Base
   # devise.rb initializer
   # config.password_length = 
 
-  #scope 
+  # Scopes
+  #others who also favorited this
+
 
   ### Authentication
 

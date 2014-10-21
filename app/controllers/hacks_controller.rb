@@ -1,7 +1,8 @@
 class HacksController < ApplicationController
-  before_action :all_hacks, only: [:index,                   :create, :update, :destroy]
-  before_action :set_hack,  only: [            :show, :edit,          :update, :destroy]
 
+  # For ajax
+  #before_action :all_hacks, only: [:index,                   :create, :update, :destroy]
+  before_action :set_hack,  only: [            :show, :edit,          :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   respond_to :js, :html
@@ -9,7 +10,6 @@ class HacksController < ApplicationController
   def favorite
     @hack_id = params[:id]
     @favorite = Favorite.find_or_initialize_by(user_id: current_user.id, hack_id: params[:id])
-
 
     if @favorite.persisted?
       @favorite.destroy
@@ -28,6 +28,16 @@ class HacksController < ApplicationController
   # GET /hacks
   # GET /hacks.json
   def index
+    if params[:tag]
+      @hacks = Hack.tagged_with(params[:tag]).includes(:taggings, :tags, :favorites, :users).page(params[:page]).per(20)
+    else
+      @hacks = Hack.all.by_newest.page(params[:page]).per(20)
+    end
+
+    #else params[:filter]
+      #@hacks = Hack. #call scope method corresponding to filter parameter's semantics.
+    #end
+
     #@users = @hacks.join users where user_id current_user.id
     #@favorites = @hacks.joins favorites where user_id = current_user.id
     #Then bind these to @hacks, and make the partial referencing them call the cached users and favorites
@@ -53,9 +63,10 @@ class HacksController < ApplicationController
 
   # GET /hacks/1/edit
   def edit
-    if timed_out?(@hack)
-      redirect_to request.referrer, notice: "No longer editable."
-    end
+
+    #f timed_out?(@hack)
+    # redirect_to request.referrer, notice: "No longer editable."
+    #nd
   end
 
   # POST /hacks

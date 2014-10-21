@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :hacks, concerns: :paginatable do
     post "favorite", on: :member    
   end
+  get "tag/:tag", to: "hacks#index", as: :tag
 
   resources :users, except: [:new, :create, :delete]
 

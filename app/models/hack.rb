@@ -17,13 +17,12 @@
 class Hack < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   
-  has_many :users, through: :favorites
+  has_many :users, through: :favorites  # Conflict?
   has_many :favorites
 
   acts_as_commentable
   acts_as_taggable_on :tags
   acts_as_votable  
-
 
   scope :by_newest,         -> { order("created_at DESC") }
   #scope :by_highest_rating, -> { order("rating DESC") } # with vote table?

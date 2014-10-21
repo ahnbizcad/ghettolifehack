@@ -20,9 +20,13 @@ acts_as_taggable_on
 
 Upcoming:
 
+tags editable via ajax by any logged in user
+devise authenticate_user! functional with ajax
 voting
-tagging categories
-devise authenticate_user! compatible with ajax
+voting by scopes
+users who also favorited this hack
+different visual for submitted, popular, featured, favorited hacks.
 shares count per user
 twitter image on hacks and comments
 facebook share an individual hack
+indented comments

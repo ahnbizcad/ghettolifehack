@@ -24,6 +24,9 @@ li.hack.media.well.well-sm[ id="hack-#{hack.id}" ]
 
   hr.horizontal-divider
 
+  .hack-header
+    = raw(hack.tag_list.map{ |t| link_to t, tag_path(t) }.join(', '))
+
   .hack-footer
     .favorite-link   
       = link_to favorite_hack_path(hack), method: :post, remote: true, title: user_signed_in? ? "Favorite" : "Log in to add favorites", class: (favorited_by_current_user?(hack) ? "favorited" : "") do

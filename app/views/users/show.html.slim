@@ -1,7 +1,8 @@
 .row
   .col-xs-12.col-sm-4
 
-    h1 = @user.username
+    span[ style="font-size: 36px;" ]
+      = @user.username
     ' 
     - if matches_current_user?(@user)
       small

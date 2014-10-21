@@ -4,5 +4,9 @@
   .form-group
     = f.input :body, placeholder: "Your ghetto life hack"
 
+  .form-group
+    = f.label :tag_list, "Tags (separate tags with commas)"
+    = f.input :tag_list
+
   .form-actions
     = f.button :submit, class: "btn-primary"
