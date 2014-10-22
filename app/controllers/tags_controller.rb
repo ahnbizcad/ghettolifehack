@@ -1,4 +1,4 @@
-class TagController << ActiveRecord::Base
+class TagsController < ApplicationController
   #before_action: 
 
   def new
