@@ -6,7 +6,15 @@ aside#sidebar-one
           | Categories
 
         .sidebar-element-body.well.well-sm
-          | categories.all
+          - Hack.all.tag_counts.each do |tag|
+            = link_to tag_path(tag.name) do 
+              = tag.name
+              |  (
+              = tag.taggings_count
+              | ) 
+              <br>
+          /= untagged - help tag!
+          
 
     /.col-xs-12
     /  .sidebar-element-body.well.well-sm

@@ -18,15 +18,20 @@ acts_as_commentable_with_threading
 acts_as_taggable_on
 
 
-Upcoming:
+Upcoming
 
-tags editable via ajax by any logged in user
-devise authenticate_user! functional with ajax
 voting
 voting by scopes
-users who also favorited this hack
+
+indented comments
 different visual for submitted, popular, featured, favorited hacks.
+footer formatting
+
 shares count per user
 twitter image on hacks and comments
 facebook share an individual hack
-indented comments
+"Would you also like to tweet" when submitting a GLH
+
+tags editable via ajax by any logged in user
+devise authenticate_user! functional with ajax
+users who also favorited this hack

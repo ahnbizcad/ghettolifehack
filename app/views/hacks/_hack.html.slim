@@ -22,10 +22,13 @@ li.hack.media.well.well-sm[ id="hack-#{hack.id}" ]
   .hack-body
     = hack.body
 
-  hr.horizontal-divider
-
   .hack-header
-    = raw(hack.tag_list.map{ |t| link_to t, tag_path(t) }.join(', '))
+    = raw(hack.tag_list.map{ |tn| link_to tn, tag_path(tn) }.join(', '))
+    ' 
+    = link_to "+", edit_hack_path(hack), title: "Edit Tags"
+    /= best_in_place hack, :tag_list, type: :input, nil: "Be the first to categorize this hack."
+
+  hr.horizontal-divider
 
   .hack-footer
     .favorite-link   

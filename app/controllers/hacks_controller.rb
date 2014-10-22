@@ -1,11 +1,10 @@
 class HacksController < ApplicationController
-
   # For ajax
   #before_action :all_hacks, only: [:index,                   :create, :update, :destroy]
   before_action :set_hack,  only: [            :show, :edit,          :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-  respond_to :js, :html
+  respond_to :js, :html, :json
 
   def favorite
     @hack_id = params[:id]
@@ -64,7 +63,7 @@ class HacksController < ApplicationController
   # GET /hacks/1/edit
   def edit
 
-    #f timed_out?(@hack)
+    #if timed_out?(@hack)
     # redirect_to request.referrer, notice: "No longer editable."
     #nd
   end

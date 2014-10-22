@@ -2,7 +2,7 @@
   .col-xs-12
 
 .row
-  .col-xs-12.col-sm-4.col
+  .col-xs-12.col-sm-4.col-sm-offset-1
     | Categories
     /= categories.each |cat|
     /  = link_to "cat.name", category_path(cat)
@@ -15,7 +15,7 @@
         = link_to ""
           | About
 
-  .col-xs-12.col-sm-4
+  .col-xs-12.col-sm-3
     #social-follow-buttons
       #twitter-follow-button
         = link_to "https://twitter.com/GhettoLifeHack_", class: "twitter-follow-button", data: { "show-count" => "false", dnt: "true" } do

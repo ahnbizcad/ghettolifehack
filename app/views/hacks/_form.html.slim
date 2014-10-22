@@ -2,11 +2,13 @@
   = f.error_notification
 
   .form-group
-    = f.input :body, placeholder: "Your ghetto life hack"
+    - if params[:action] == "edit"
+      = f.input :body, placeholder: "Your GLH", label: "Your Ghetto Life Hack", disabled: (timed_out?(@hack) || !matches_current_user?(@hack.user))
+    - else
+      = f.input :body, placeholder: "Your GLH", label: "Your Ghetto Life Hack"
 
   .form-group
-    = f.label :tag_list, "Tags (separate tags with commas)"
-    = f.input :tag_list
+    = f.input :tag_list, label: "Tags (separated by commas)"
 
   .form-actions
     = f.button :submit, class: "btn-primary"
