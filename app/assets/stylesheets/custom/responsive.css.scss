@@ -26,14 +26,27 @@ main {
   display: none;
 }
 
+footer {
+  .col-xs-12 {
+    text-align: center;
+    padding: 1em 0;
+  }
+}
+
 /*----------------------------------------
 sm devices (tablets, 748px and up)
 ----------------------------------------*/
 @media only screen and (min-width: $screen-sm){ 
 
   .hide-responsive {
-    
     display: initial;
+  }
+
+  footer {
+    .col-xs-12 {
+      text-align: left;
+      padding: 1em 0;
+    }
   }
 
 }

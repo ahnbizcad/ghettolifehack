@@ -2,21 +2,20 @@
   .col-xs-12
 
 .row
-  .col-xs-12.col-sm-4.col-sm-offset-1
-    | Categories
-    /= categories.each |cat|
-    /  = link_to "cat.name", category_path(cat)
-  .col-xs-12.col-sm-4
+  .col-xs-12.col-sm-4.col-sm-offset-2
     ul.no-bullet
+      li
+        = link_to ""
+          | About
       li
         = link_to "ghettolifehack@gmail.com" do
           | Contact
       li
-        = link_to ""
-          | About
+        = link_to "ghettolifehack@gmail.com" do
+          | Feedback & Suggestions
 
-  .col-xs-12.col-sm-3
-    #social-follow-buttons
+  .col-xs-12.col-sm-4.col-sm-offset-1
+    #social-follow-buttons[ overflow="hidden" ]
       #twitter-follow-button
         = link_to "https://twitter.com/GhettoLifeHack_", class: "twitter-follow-button", data: { "show-count" => "false", dnt: "true" } do
           | Follow @GhettoLifeHack_
@@ -25,4 +24,3 @@
 
       #facebook-follow-button
         .fb-follow[ data-href="https://www.facebook.com/ghettolifehack" data-colorscheme="light" data-layout="standard" data-width="150" data-show-faces="true"]
-

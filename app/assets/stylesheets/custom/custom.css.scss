@@ -11,7 +11,6 @@ ul.no-bullet {
 textarea {
   min-width: 100%;
   max-width: 100%;
-  rows: 10;
 }
 
 hr.horizontal-divider {
@@ -37,8 +36,7 @@ footer {
 
   background-color: $darkdarkgreen;
   color: $offwhite;
-  font-weight: $header-font-weight;
-
+  
   padding: 0 0 2em;
 
   a {

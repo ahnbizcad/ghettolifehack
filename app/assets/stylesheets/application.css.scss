@@ -15,15 +15,14 @@
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
 /* Blanket Styles */
-@import "custom/bootstrap_override";
 @import "custom/variables";
+@import "custom/bootstrap_override";
 @import "custom/custom";
 @import "custom/responsive";
 
 /* Plugin Styles */
 
 
-@import "favorites";
 /*
  *= require_tree .
  **= require_self

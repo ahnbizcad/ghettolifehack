@@ -27,6 +27,7 @@ indented comments
 different visual for submitted, popular, featured, favorited hacks.
 footer formatting
 
+facebook turbolinks issue when sending second request before first finishes.
 shares count per user
 twitter image on hacks and comments
 facebook share an individual hack
@@ -35,3 +36,6 @@ facebook share an individual hack
 tags editable via ajax by any logged in user
 devise authenticate_user! functional with ajax
 users who also favorited this hack
+
+points
+badges ( e.g. "hard at work")

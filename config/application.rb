@@ -20,5 +20,10 @@ module Ghettolifehack
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+# Acts As Taggable On
+
+    ActsAsTaggableOn.remove_unused_tags = true
+    ActsAsTaggableOn.force_lowercase    = true
+
   end
 end

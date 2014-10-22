@@ -1,7 +1,6 @@
 class TagController << ActiveRecord::Base
   #before_action: 
 
-
   def new
 
   end

@@ -18,7 +18,8 @@
 //    require angular
 //    require angular-route
 //    require angular-rails-templates
-//= best_in_place
+//
+//    require best_in_place
 //
 //= require twitter_button
 //= require facebook_button
