@@ -20,22 +20,25 @@ acts_as_taggable_on
 
 Upcoming
 
-voting
-voting by scopes
+admin page
 
 indented comments
 different visual for submitted, popular, featured, favorited hacks.
-footer formatting
 
 facebook turbolinks issue when sending second request before first finishes.
-shares count per user
-twitter image on hacks and comments
 facebook share an individual hack
-"Would you also like to tweet" when submitting a GLH
+facebook share positioning on individual hack
 
-tags editable via ajax by any logged in user
+voting
+voting by scopes
+
+twitter image on hacks, comments, and profile
+"Would you also like to tweet" when submitting a GLH
+shoutout to poster when tweeting as @ghettolifehack
+
 devise authenticate_user! functional with ajax
 users who also favorited this hack
 
-points
-badges ( e.g. "hard at work")
+? points
+? badges ( e.g. "hard at work")
+

@@ -129,7 +129,7 @@ class HacksController < ApplicationController
 
   private
     def all_hacks
-      @hacks = Hack.all.by_newest.page(params[:page]).per(10)
+      @hacks = Hack.eager_loaded_except_comments.by_newest.page(params[:page]).per(10)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_hack

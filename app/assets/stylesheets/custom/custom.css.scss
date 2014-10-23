@@ -9,9 +9,33 @@ ul.no-bullet {
 }
 
 textarea {
-  min-width: 100%;
   max-width: 100%;
+  resize: vertical;
+
+  min-height: 50px;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  padding: 5px;
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
+
+.hidden-textarea-clone {
+    display: none;
+    
+    min-width: 100%;
+    max-width: 100%;
+
+    min-height: 50px;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    padding: 5px;
+
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 
 hr.horizontal-divider {
   margin: 5px 0px;
@@ -183,6 +207,10 @@ header {
   }
   .hack-footer > * {
     display: inline-block;
+  }
+  .tags {
+    font-size: 0.85em;
+    font-style: italic;
   }
 }
 

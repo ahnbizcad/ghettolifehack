@@ -8,6 +8,7 @@
 #  body                  :text
 #  user_id               :integer
 #  comment_threads_count :integer          default(0), not null
+#  cached_tag_list       :string(255)
 #
 # Indexes
 #
@@ -22,19 +23,18 @@ class Hack < ActiveRecord::Base
 
   acts_as_commentable
   acts_as_taggable_on :tags
-  acts_as_votable  
+  acts_as_votable
+
+  def self.eager_loaded_except_comments
+    all.eager_load([:favorites, :users])
+  end
 
   scope :by_newest,         -> { order("created_at DESC") }
   #scope :by_highest_rating, -> { order("rating DESC") } # with vote table?
   #scope :favorites_of_user, ->(user_id) { joins(:favorites).where(user_id: user_id) }
 
-  # Favorite is different model from Hack, inner join? Also, user id
-  #scope :favorites, joins(:favorites) & -> { joins(:favorites) }
-
-
   def user_image
     self.user.image
   end
-
 
 end

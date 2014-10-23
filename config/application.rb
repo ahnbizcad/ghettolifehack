@@ -20,6 +20,10 @@ module Ghettolifehack
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+# Enable Devise helper methods in models # Doesn't work.    
+
+    #config.action_controller.include_all_helpers = false
+
 # Acts As Taggable On
 
     ActsAsTaggableOn.remove_unused_tags = true

@@ -1,14 +1,20 @@
-= simple_form_for(@hack) do |f|
-  = f.error_notification
+/new.html.slim - hacks
+/== render 'form'
 
-  .form-group
-    - if params[:action] == "edit"
-      = f.input :body, placeholder: "Your GLH", label: "Your Ghetto Life Hack", disabled: (timed_out?(@hack) || !matches_current_user?(@hack.user))
+/edit.html.slim - hacks
+/== render 'form'
+
+.hack-form
+  = simple_form_for(@hack) do |f|
+    = f.error_notification
+
+    - if params[:controller] == "hacks" && params[:action] == "edit"
+      = f.input :body, label: "Ghetto Life Hack", placeholder: "Your GLH", disabled: (!currently_admin? && (!matches_current_user?(@hack.user) || timed_out?(@hack) ))
+      = f.input :tag_list, label: "Categories (separated by commas)", autofocus: true
     - else
-      = f.input :body, placeholder: "Your GLH", label: "Your Ghetto Life Hack"
+      = f.input :body, placeholder: "Ghetto Life Hack", label: "Your Ghetto Life Hack", autofocus: true
+      = f.input :tag_list, label: "Categories (separated by commas)"
+    
 
-  .form-group
-    = f.input :tag_list, label: "Tags (separated by commas)"
-
-  .form-actions
-    = f.button :submit, class: "btn-primary"
+    .form-actions
+      = f.button :submit, class: "btn-primary"

@@ -8,6 +8,7 @@
 #  body                  :text
 #  user_id               :integer
 #  comment_threads_count :integer          default(0), not null
+#  cached_tag_list       :string(255)
 #
 # Indexes
 #
