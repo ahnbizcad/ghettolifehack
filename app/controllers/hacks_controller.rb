@@ -28,7 +28,7 @@ class HacksController < ApplicationController
   # GET /hacks.json
   def index
     if params[:tag]
-      @hacks = Hack.tagged_with(params[:tag]).includes(:taggings, :tags, :favorites, :users).page(params[:page]).per(20)
+      @hacks = Hack.tagged_with(params[:tag]).includes([:taggings, :tags], :favorites, :users).page(params[:page]).per(20)
     else
       @hacks = Hack.all.by_newest.page(params[:page]).per(20)
     end
@@ -129,9 +129,9 @@ class HacksController < ApplicationController
 
   private
     def all_hacks
-      @hacks = Hack.eager_loaded_except_comments.by_newest.page(params[:page]).per(10)
+     # @hacks =
     end
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_hack
       @hack = Hack.find(params[:id])
     end

@@ -25,9 +25,9 @@ class Hack < ActiveRecord::Base
   acts_as_taggable_on :tags
   acts_as_votable
 
-  def self.eager_loaded_except_comments
-    all.eager_load([:favorites, :users])
-  end
+  #def self.eager_loaded_except_comments
+  #  all.eager_load([:favorites, :users])
+  #end
 
   scope :by_newest,         -> { order("created_at DESC") }
   #scope :by_highest_rating, -> { order("rating DESC") } # with vote table?
