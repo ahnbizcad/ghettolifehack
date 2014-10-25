@@ -28,9 +28,21 @@ class HacksController < ApplicationController
   # GET /hacks.json
   def index
     if params[:tag]
-      @hacks = Hack.tagged_with(params[:tag]).includes([:taggings, :tags], :favorites, :users).page(params[:page]).per(20)
+      if user_signed_in?
+        @hacks = Hack.tagged_with(params[:tag]).includes(:users, :favorites).by_newest
+        @hacks = @hacks.page(params[:page]).per(20)
+      else
+        @hacks = Hack.tagged_with(params[:tag]).includes(:users).by_newest
+        @hacks = @hacks.page(params[:page]).per(20)
+      end
     else
-      @hacks = Hack.all.by_newest.page(params[:page]).per(20)
+      if user_signed_in?
+        @hacks = Hack.includes(:users, :favorites).by_newest
+        @hacks = @hacks.page(params[:page]).per(20)
+      else
+        @hacks = Hack.includes(:users).by_newest
+        @hacks = @hacks.page(params[:page]).per(20)
+      end
     end
 
     #else params[:filter]

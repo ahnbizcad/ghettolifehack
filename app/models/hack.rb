@@ -29,7 +29,7 @@ class Hack < ActiveRecord::Base
   #  all.eager_load([:favorites, :users])
   #end
 
-  scope :by_newest,         -> { order("created_at DESC") }
+  scope :by_newest,         -> { order("hacks.created_at DESC") }
   #scope :by_highest_rating, -> { order("rating DESC") } # with vote table?
   #scope :favorites_of_user, ->(user_id) { joins(:favorites).where(user_id: user_id) }
 

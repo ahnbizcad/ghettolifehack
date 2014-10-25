@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
     def favorited_by_current_user?(hack)
       if user_signed_in?
-        if Favorite.find_by_hack_id_and_user_id(hack.id, current_user.id)
+        if hack.favorites.find_by(user_id: current_user.id)#.where(favorites: { user_id: current_user.id}).references(:favorites)
           true
         else
           false

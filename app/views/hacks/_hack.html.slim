@@ -28,7 +28,7 @@ li.hack.media.well.well-sm[ id="hack-#{hack.id}" ]
       = link_to t.strip, tag_path(t.strip)
       ' ,
 
-    = link_to edit_hack_path(hack), title: "Add a Category" do
+    = link_to edit_hack_path(hack), title: "Add Categories" do
       i.glyphicon.glyphicon-plus
     /= best_in_place hack, :tag_list, type: :input, nil: "Be the first to tag this hack."
     / Authorization solution required if best in place is to be used.
@@ -42,6 +42,12 @@ li.hack.media.well.well-sm[ id="hack-#{hack.id}" ]
       = link_to favorite_hack_path(hack), method: :post, remote: true, title: user_signed_in? ? "Favorite" : "Log in to add favorites", class: (favorited_by_current_user?(hack) ? "favorited" : "") do
         .star-image
     '
+    /(favorited_by_current_user?(hack)
+
+    /= hack.favorites.find_by(user_id: current_user.id).class
+
+    /- hack.favorites.each do |f|
+     / = f.user_id 
     .comment-link
       = link_to hack, title: "Comments" do
         span[class="glyphicon glyphicon-comment"]
