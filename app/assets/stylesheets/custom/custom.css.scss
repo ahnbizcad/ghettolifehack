@@ -184,7 +184,7 @@ header {
 }
 
 
-#social-share-buttons {
+.social-share-buttons {
   .social-share-button {
 
   }  
@@ -228,7 +228,7 @@ header {
       width: 14px;
       height: 14px;
    
-      background-image: url("star-off.png");
+      background-image: asset-url("star-off.png");
       background-size: contain;
       background-repeat: no-repeat;
     }

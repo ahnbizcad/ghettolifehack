@@ -38,10 +38,10 @@ class HacksController < ApplicationController
     else
       if user_signed_in?
         @hacks = Hack.includes(:users, :favorites).by_newest
-        @hacks = @hacks.page(params[:page]).per(20)
+        @hacks = @hacks.page(params[:page]).per(10)
       else
         @hacks = Hack.includes(:users).by_newest
-        @hacks = @hacks.page(params[:page]).per(20)
+        @hacks = @hacks.page(params[:page]).per(10)
       end
     end
 

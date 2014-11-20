@@ -38,8 +38,13 @@ li.hack.media.well.well-sm[ id="hack-#{hack.id}" ]
   hr.horizontal-divider
 
   .hack-footer
+    .vote-links
+      /= link_to about_path, method: :post, remote: true do 
+      /  = "That's... so ghetto."
+      /= link_to about_path, method: :post, remote: true do
+      /  = "That's... actually useful."
     .favorite-link   
-      = link_to favorite_hack_path(hack), method: :post, remote: true, title: user_signed_in? ? "Favorite" : "Log in to add favorites", class: (favorited_by_current_user?(hack) ? "favorited" : "") do
+      = link_to favorite_hack_path(hack), method: :post, remote: true, title: user_signed_in? ? "Favorite" : "Log in to track favorites.", class: (favorited_by_current_user?(hack) ? "favorited" : "") do
         .star-image
     '
     /(favorited_by_current_user?(hack)
@@ -57,7 +62,7 @@ li.hack.media.well.well-sm[ id="hack-#{hack.id}" ]
         ' )
     '
 
-    #social-share-buttons
+    .social-share-buttons
       = link_to "https://twitter.com/share", class: "twitter-share-button", data: { url: hack_url(hack), count: "none", text: hack.body, via: "GhettoLifeHack_", hashtags: "ghettolifehack" } do
       ' 
 

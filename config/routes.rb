@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'pages/about'
-  get 'pages/contact'
-  get 'pages/feedback'
+  get 'pages/about',    as: "about"
+  get 'pages/contact',  as: "contact"
+  get 'pages/feedback', as: "feedback"
 
   root 'hacks#index'
   #get '*path' => 'application#index'
