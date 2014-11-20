@@ -12,7 +12,7 @@
       ul#login.nav.navbar-nav.navbar-right
         -if user_signed_in?
           li= link_to current_user do
-            = image_tag current_user.image
+            /= image_tag current_user.image
             = current_user.username
           li= link_to edit_user_registration_path, title: "Account Settings" do
             i.glyphicon.glyphicon-cog
