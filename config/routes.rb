@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  root 'hacks#index'
+  #get '*path' => 'application#index'
+
   get 'pages/about',    as: "about"
   get 'pages/contact',  as: "contact"
   get 'pages/feedback', as: "feedback"
-
-  root 'hacks#index'
-  #get '*path' => 'application#index'
 
   concern :paginatable do
     get '(page/:page)', :action => :index, :on => :collection, :as => ''
