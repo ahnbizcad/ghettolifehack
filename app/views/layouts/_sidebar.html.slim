@@ -5,7 +5,7 @@ aside#sidebar-one
         .sidebar-element-header
           | Categories
 
-        .sidebar-element-body.well.well-sm
+        .sidebar-element-body
           - Hack.all.tag_counts.each do |tag|
             = link_to tag_path(tag.name) do 
               = tag.name
@@ -34,7 +34,7 @@ aside#sidebar-one
       #sidebar-follow.sidebar-element
         .sidebar-element-header
           | Follow
-        .sidebar-element-body.well.well-sm
+        .sidebar-element-body
           #social-follow-buttons
             #twitter-follow-button
               = link_to "https://twitter.com/GhettoLifeHack_", class: "twitter-follow-button", data: { "show-count" => "false", dnt: "true" } do

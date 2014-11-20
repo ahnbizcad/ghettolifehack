@@ -52,12 +52,13 @@ body {
     background: linear-gradient($offwhite, $lightgreen);
   }
   */
+  background-color: $lightlightgreen;
 }
 
 footer {
   #footer-fade {
     height: 100px;
-    background: linear-gradient($lightgreen, $darkdarkgreen);
+    background: linear-gradient($lightlightgreen, $darkdarkgreen);
   }
 
   background-color: $darkdarkgreen;
@@ -135,11 +136,14 @@ header {
 #sidebar-one {
 
   .sidebar-element {    
-    border-color: $darkgreen;
+    border-radius: 3px;
+    border: 1px solid $mediumgreen;
+    margin-bottom: 1em;
+
 
     .sidebar-element-header {
       text-align: center;
-      padding: 0.50em 0em;
+      padding: 0.50em;
       
       @include standard-gradient;
       color: $offwhite;
@@ -147,7 +151,8 @@ header {
     }
 
     .sidebar-element-body {
-      background-color: #FFF;
+      background-color: #F8F8F8;
+      padding: 0.50em;
     }
   }
 
@@ -193,7 +198,7 @@ header {
 
 .hack {
   list-style: none;
-  border-color: $darkgreen;
+  border: 1px solid $mediumgreen;
   background-color: #FFF;
 
   .close {
