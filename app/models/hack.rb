@@ -18,7 +18,7 @@
 class Hack < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   
-  has_many :favoriters, through: :favorites, source: :users
+  has_many :users, through: :favorites
   has_many :favorites, dependent: :destroy
 
   acts_as_commentable
