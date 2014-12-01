@@ -13,7 +13,7 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
         flash[:notice] = "Successfully dissociated #{provider} from your #{@title} account." #ajaxify
         redirect_to edit_user_registration_path
       end
-    elsif current_user
+    elsif user_signed_in?
       current_user.authentications.create!(
         provider: omniauth['provider'],
         uid: omniauth['uid'],
@@ -22,11 +22,11 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
       )
       flash[:notice] = "Successfully associated #{provider} with your #{@title} account."
       redirect_to edit_user_registration_path
-    elsif authentication # fails
+    elsif authentication
       user = User.find(authentication.user_id) 
       flash[:notice] = "Login with #{provider} successful."
       sign_in_and_redirect user
-    else # Not logged in and hasned logged in with a provider before.
+    else
       user = User.new
       user.apply_omniauth(omniauth)  
       if user.save
@@ -44,7 +44,6 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
         # Does that extra catch form page need extra work to work with Devise?
       end
     end
-
   end
 
   Authentication::SOCIALS.each do |k, _|

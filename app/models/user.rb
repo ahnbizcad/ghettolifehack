@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
   # Overrides Devise method
   # For logins and signins only, not for edit registration
   def password_required?
-    # super = !persisted? || !password.nil? || !password_confirmation.nil?
+    # super = persisted? || !password.nil? || !password_confirmation.nil?
     super && (authentications.blank?)    
   end
 
@@ -95,11 +95,12 @@ class User < ActiveRecord::Base
       params.delete(:password_confirmation) if params[:password_confirmation].blank?
     end
 
-    # Different from original
+    # v Different from original
     has_authentication_but_not_encrypted_password = encrypted_password.blank?   && authentications.present?
     has_encrypted_password_but_not_changing       = encrypted_password.present? && params[:password].blank?
-    #
+    
     result = if valid_password?(current_password) || has_encrypted_password_but_not_changing || has_authentication_but_not_encrypted_password
+    # ^ Different from original
       update_attributes(params, *options)
     else
       self.assign_attributes(params, *options)
